@@ -1,0 +1,47 @@
+# Tự dựng web và đưa lên GitHub Pages mỗi khi có bài mới (commit lên nhánh main).
+name: Dựng và đăng web
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # cho phép bấm chạy tay trong tab Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  dung-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Kiểm tra riêng tư
+        run: node scripts/kiem-tra-rieng-tu.mjs
+        env:
+          TU_NHAY_CAM: ${{ secrets.TU_NHAY_CAM }}
+      - name: Dựng web bằng Eleventy
+        run: npx @11ty/eleventy
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  dua-len-pages:
+    needs: dung-web
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

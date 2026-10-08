@@ -1,0 +1,39 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Danh sách bài theo loại (/goc-cha-me/, /truyen/, /hoc-cung-con/, /nhat-ky/). Cần biến: loaiHienTai -#}
+{%- set dsBai = collections.theoLoai[loaiHienTai.ma] or [] -%}
+{%- set cacNhomLoc = [
+  { ma: "tuoi", ten: "Tuổi", muc: dsDoTuoi },
+  { ma: "chu-de", ten: "Chủ đề", muc: dsChuDe }
+] -%}
+<div class="khung">
+  <header class="dau-danh-sach">
+    <p class="cac-nhan"><span class="nhan nhan-{{ loaiHienTai.nhan }}">{{ loaiHienTai.ten }}</span></p>
+    <h1>{{ loaiHienTai.ten }}</h1>
+    <p class="mo-ta-lon">{{ loaiHienTai.mo_ta }}</p>
+  </header>
+
+  {%- if loaiHienTai.ma == "truyen" and collections.boTruyen | length %}
+  <section class="khu" aria-labelledby="tieu-de-bo-truyen">
+    <h2 id="tieu-de-bo-truyen">Truyện nhiều kỳ</h2>
+    <ul class="ds-bo-truyen">
+      {%- for ma, dsKy in collections.boTruyen %}{% set bt = dsBoTruyen[ma] %}{% if bt %}
+      <li><a href="/truyen/{{ ma }}/">{{ bt.ten }}</a> <span class="phu">{{ dsKy.length }} kỳ · {{ "Hoàn thành" if bt.trang_thai == "hoan-thanh" else "Đang đăng" }}</span></li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
+  {%- if dsBai.length %}
+  {% include "partials/bo-loc.njk" %}
+  <div class="luoi-the" data-luoi-loc>
+    {%- set capThe = "h2" %}
+    {%- for bai in dsBai %}
+    {% include "partials/the-bai.njk" %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p class="trong">Mục này chưa có bài. Vườn đang gieo hạt, anh chị ghé lại sau nhé.</p>
+  {%- endif %}
+</div>

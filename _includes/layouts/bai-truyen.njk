@@ -1,0 +1,50 @@
+---
+layout: layouts/co-so.njk
+lop_body: trang-truyen
+---
+{#- Bài Truyện: hộp thông tin, lời ngỏ, nội dung, trò chuyện cùng con, hoạt động tiếp nối,
+    điều hướng kỳ trước / mục lục / kỳ sau (nếu thuộc bộ truyện), nút In -#}
+{%- set baiNay = collections.tatCaBai | timTheoUrl(page.url) -%}
+{%- set boTruyenNay = dsBoTruyen[bo_truyen] if bo_truyen else null -%}
+{%- if boTruyenNay %}{% set kyKe = collections.boTruyen[bo_truyen] | kyKeBen(page.url) %}{% endif -%}
+{%- set dongThongTin = [
+  { nhan: "Tuổi", gia_tri: do_tuoi | khoangTuoi },
+  { nhan: "Thời gian đọc", gia_tri: soPhutDoc + " phút" },
+  { nhan: "Chủ đề", gia_tri: chu_de | tenCacChuDe }
+] -%}
+<article class="bai khung-hep">
+  {% include "partials/dau-bai.njk" %}
+  {%- if boTruyenNay %}{% include "partials/ky-truoc-sau.njk" %}{% endif %}
+  {% include "partials/hop-thong-tin.njk" %}
+  {%- if loi_ngo %}
+  <aside class="hop hop-loi-ngo" aria-labelledby="tieu-de-loi-ngo">
+    <h2 class="tieu-de-hop" id="tieu-de-loi-ngo">Lời ngỏ cho cha mẹ</h2>
+    <p>{{ loi_ngo }}</p>
+  </aside>
+  {%- endif %}
+  {% include "partials/anh-bia.njk" %}
+  {% include "partials/video.njk" %}
+  <div class="noi-dung noi-dung-truyen">
+    {{ content | safe }}
+  </div>
+  {% include "partials/cau-hoi-goi-mo.njk" %}
+  {%- if hoat_dong_tiep_noi %}
+  {%- set hoatDong = collections.tatCaBai | timTheoUrl(hoat_dong_tiep_noi) %}
+  {%- if hoatDong %}
+  <aside class="the-tiep-noi" aria-labelledby="tieu-de-tiep-noi">
+    <p class="the-tiep-noi-nhan" id="tieu-de-tiep-noi">Hoạt động tiếp nối</p>
+    <a href="{{ hoatDong.url }}">{{ hoatDong.data.title }}</a>
+    {%- if hoatDong.data.mo_ta %}<p>{{ hoatDong.data.mo_ta }}</p>{% endif %}
+  </aside>
+  {%- endif %}
+  {%- endif %}
+  <p class="luu-y-cha-me"><strong>Lưu ý cho cha mẹ:</strong> Không có câu trả lời sai. Đừng biến giờ đọc truyện thành giờ giảng đạo lý.</p>
+  {%- if boTruyenNay %}{% include "partials/ky-truoc-sau.njk" %}{% endif %}
+  {%- set chuNutIn = "In truyện" %}
+  {% include "partials/nut-in.njk" %}
+  {% include "partials/chia-se.njk" %}
+  <p class="nguon-in">Từ {{ (page.url | tuyetDoi) | replace("https://", "") }} · {{ site.tac_gia }}</p>
+</article>
+<div class="khung">
+  {% include "partials/bai-lien-quan.njk" %}
+</div>

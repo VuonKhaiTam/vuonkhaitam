@@ -1,0 +1,54 @@
+{#- Khuôn gốc: mọi trang đều dùng khuôn này -#}
+{%- set laTrangChu = page.url == "/" -%}
+{%- set laBai = loai -%}
+{%- set tieuDeTrang = (site.ten + " · " + site.khau_hieu) if laTrangChu else (title + " | " + site.ten) -%}
+{%- set moTaTrang = mo_ta or site.mo_ta -%}
+{%- set anhChiaSe = anh_chia_se or "/assets/logo/og-mac-dinh.jpg" -%}
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; script-src 'self'; style-src 'self'; base-uri 'self'; form-action 'none'">
+<title>{{ tieuDeTrang }}</title>
+<meta name="description" content="{{ moTaTrang }}">
+<link rel="canonical" href="{{ page.url | tuyetDoi }}">
+<meta name="theme-color" content="#F8F5EE">
+{%- if khong_lap_chi_muc %}
+<meta name="robots" content="noindex">
+{%- endif %}
+<link rel="preload" href="/assets/fonts/be-vietnam-pro-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/be-vietnam-pro-vietnamese-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/chinh.css?v={{ phienBan }}">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+{#- Thông tin hiện ra khi chia sẻ link lên Facebook, Zalo (Open Graph) #}
+<meta property="og:type" content="{{ 'article' if laBai else 'website' }}">
+<meta property="og:site_name" content="{{ site.ten }}">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="{{ title if (title and not laTrangChu) else site.ten }}">
+<meta property="og:description" content="{{ moTaTrang }}">
+<meta property="og:url" content="{{ page.url | tuyetDoi }}">
+<meta property="og:image" content="{{ anhChiaSe | tuyetDoi }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ anh_bia_mo_ta or site.ten }}">
+{%- if laBai %}
+<meta property="article:published_time" content="{{ page.date | ngayIso }}">
+<meta property="article:modified_time" content="{{ (cap_nhat or page.date) | ngayIso }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="{{ site.ten }}" href="/feed.xml">
+<script src="/assets/js/chinh.js?v={{ phienBan }}" defer></script>
+</head>
+<body class="{{ lop_body }}">
+<a class="bo-qua" href="#noi-dung">Bỏ qua, tới nội dung</a>
+{% include "partials/dau-trang.njk" %}
+<main id="noi-dung" tabindex="-1">
+{{ content | safe }}
+</main>
+{% include "partials/chan-trang.njk" %}
+{% include "partials/dieu-huong-day.njk" %}
+</body>
+</html>

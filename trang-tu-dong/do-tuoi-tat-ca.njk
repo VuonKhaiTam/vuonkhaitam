@@ -1,0 +1,23 @@
+---
+layout: layouts/co-so.njk
+title: Độ tuổi
+mo_ta: "Bài viết, truyện và hoạt động theo bốn nhóm tuổi của con: 6–8, 9–11, 12–15 và 16–18 tuổi."
+permalink: /do-tuoi/
+---
+<div class="khung">
+  <header class="dau-danh-sach">
+    <h1>Con anh chị bao nhiêu tuổi?</h1>
+    <p class="mo-ta-lon">Mỗi lứa tuổi cần một cách trò chuyện khác nhau. Chọn nhóm tuổi của con để xem bài phù hợp.</p>
+  </header>
+  <ul class="luoi-o">
+    {%- for t in dsDoTuoi %}
+    {%- set soBai = (collections.theoTuoi[t.ma] or []).length %}
+    <li class="o-muc">
+      <h2 class="o-muc-ten"><a href="/do-tuoi/{{ t.ma }}/">{{ t.ten }}</a></h2>
+      <p class="phu">{{ t.nhom }}</p>
+      <p>{{ t.mo_ta }}</p>
+      <p class="phu">{{ soBai }} bài</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

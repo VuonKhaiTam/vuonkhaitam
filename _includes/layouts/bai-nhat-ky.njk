@@ -1,0 +1,27 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Bài Nhật ký vườn ươm: nhãn kết quả, giai đoạn, nội dung, dòng ghi chú tự động -#}
+{%- set baiNay = collections.tatCaBai | timTheoUrl(page.url) -%}
+{%- set cacKetQua = {
+  "hieu-qua": { ten: "Hiệu quả", lop: "nhan-hieu-qua" },
+  "chua-hieu-qua": { ten: "Chưa hiệu quả", lop: "nhan-chua-hieu-qua" },
+  "dang-thu": { ten: "Đang thử", lop: "nhan-dang-thu" }
+} -%}
+{%- set nhanThem = cacKetQua[ket_qua] if ket_qua else null -%}
+<article class="bai khung-hep">
+  {% include "partials/dau-bai.njk" %}
+  {%- if giai_doan %}
+  <p class="giai-doan">Giai đoạn: {{ giai_doan }}</p>
+  {%- endif %}
+  {% include "partials/anh-bia.njk" %}
+  {% include "partials/video.njk" %}
+  <div class="noi-dung">
+    {{ content | safe }}
+  </div>
+  <p class="ghi-chu-nhat-ky">Đây là ghi chép của một gia đình, không phải lời khuyên chuyên môn. Một số chi tiết đã được thay đổi để bảo vệ trẻ.</p>
+  {% include "partials/chia-se.njk" %}
+</article>
+<div class="khung">
+  {% include "partials/bai-lien-quan.njk" %}
+</div>

@@ -1,0 +1,24 @@
+---
+layout: layouts/co-so.njk
+title: Tìm kiếm
+mo_ta: "Tìm bài viết, truyện và hoạt động trong Vườn Khai Tâm. Gõ có dấu hay không dấu đều được."
+permalink: /tim-kiem/
+---
+{#- Ô tìm kiếm. Phần tìm ngay khi gõ (tim-kiem.js + chi-muc.json) được làm ở Buổi 3. -#}
+<div class="khung-hep">
+  <h1>Tìm kiếm</h1>
+  <form class="o-tim" role="search" action="/tim-kiem/" data-o-tim>
+    <label for="o-tim-chinh">Anh chị muốn tìm gì?</label>
+    <div class="o-tim-hang">
+      <input id="o-tim-chinh" type="search" name="q" autocomplete="off" placeholder="Ví dụ: con hay cáu giận">
+      <button class="nut" type="submit">Tìm</button>
+    </div>
+    <p class="phu">Gõ có dấu hay không dấu đều được.</p>
+  </form>
+  <div class="ket-qua-tim" role="region" aria-live="polite" aria-label="Kết quả tìm kiếm"></div>
+  <h2>Hoặc xem theo</h2>
+  <ul class="ds-chu-de">
+    {%- for t in dsDoTuoi %}<li><a href="/do-tuoi/{{ t.ma }}/">{{ t.ten }}</a></li>{% endfor %}
+    {%- for cd in dsChuDe %}<li><a href="/chu-de/{{ cd.ma }}/">{{ cd.ten }}</a></li>{% endfor %}
+  </ul>
+</div>

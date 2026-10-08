@@ -1,0 +1,10 @@
+[
+  { "ma": "tu-duy", "ten": "Tư duy & hiểu sâu", "mo_ta": "Giúp con học hiểu thay vì học thuộc, biết đặt câu hỏi và tự tìm lời giải." },
+  { "ma": "cam-xuc", "ten": "Cảm xúc", "mo_ta": "Giúp con gọi tên, hiểu và tự điều chỉnh cảm xúc của mình." },
+  { "ma": "thoi-quen-hoc", "ten": "Thói quen & tự học", "mo_ta": "Tự học, tập trung, ngủ đủ: những thói quen nhỏ nuôi việc học lâu dài." },
+  { "ma": "doc-sach", "ten": "Đọc sách", "mo_ta": "Đọc cùng con, chọn sách theo tuổi và trò chuyện sau khi đọc." },
+  { "ma": "tien-bac", "ten": "Tiền bạc & giá trị", "mo_ta": "Lao động, tiết kiệm, chia sẻ: giúp con hiểu giá trị của đồng tiền." },
+  { "ma": "cong-nghe", "ten": "Màn hình & công nghệ", "mo_ta": "Điện thoại, trò chơi, AI: cùng con thỏa thuận thay vì cấm đoán." },
+  { "ma": "gan-ket", "ten": "Gắn kết cha mẹ – con", "mo_ta": "Trò chuyện, lắng nghe và những khoảnh khắc nhỏ giữ cha mẹ và con gần nhau." },
+  { "ma": "tuoi-lon", "ten": "Tuổi lớn & tự lập", "mo_ta": "Dậy thì, tự lập và chọn hướng đi: đồng hành khi con lớn dần." }
+]

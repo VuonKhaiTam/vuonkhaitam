@@ -1,0 +1,28 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Bài Góc cha mẹ: tóm tắt nhanh, nội dung, nguồn tham khảo, chia sẻ, bài liên quan -#}
+{%- set baiNay = collections.tatCaBai | timTheoUrl(page.url) -%}
+<article class="bai khung-hep">
+  {% include "partials/dau-bai.njk" %}
+  {% include "partials/anh-bia.njk" %}
+  {% include "partials/hop-tom-tat.njk" %}
+  {% include "partials/video.njk" %}
+  <div class="noi-dung">
+    {{ content | safe }}
+  </div>
+  {%- if nguon and nguon.length %}
+  <aside class="hop hop-nguon" aria-labelledby="tieu-de-nguon">
+    <h2 class="tieu-de-hop" id="tieu-de-nguon">Nguồn tham khảo</h2>
+    <ul>
+      {%- for n in nguon %}
+      <li>{% if n.link %}<a href="{{ n.link }}" rel="noopener">{{ n.ten }}</a>{% else %}{{ n.ten }}{% endif %}</li>
+      {%- endfor %}
+    </ul>
+  </aside>
+  {%- endif %}
+  {% include "partials/chia-se.njk" %}
+</article>
+<div class="khung">
+  {% include "partials/bai-lien-quan.njk" %}
+</div>

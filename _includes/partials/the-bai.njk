@@ -1,0 +1,17 @@
+{#- Thẻ bài trong danh sách. Cần biến: bai; tùy chọn: capThe (h2/h3) -#}
+{%- set theTieuDe = capThe or "h3" -%}
+<article class="the-bai" data-loai="{{ bai.data.loai }}" data-tuoi="{{ (bai.data.do_tuoi or []) | join(' ') }}" data-chu-de="{{ (bai.data.chu_de or []) | join(' ') }}">
+  {%- if bai.data.anh_bia %}
+  <img class="the-bai-anh" src="{{ bai.data.anh_bia }}" alt="{{ bai.data.anh_bia_mo_ta }}" sizes="(min-width: 960px) 330px, (min-width: 600px) 45vw, 100vw">
+  {%- else %}
+  <div class="the-bai-anh anh-tam" aria-hidden="true"></div>
+  {%- endif %}
+  <div class="the-bai-than">
+    <p class="cac-nhan">{% include "partials/nhan.njk" %}</p>
+    <{{ theTieuDe }} class="the-bai-tieu-de"><a href="{{ bai.url }}">{{ bai.data.title }}</a></{{ theTieuDe }}>
+    {%- if bai.data.mo_ta %}
+    <p class="the-bai-mo-ta">{{ bai.data.mo_ta }}</p>
+    {%- endif %}
+    <p class="the-bai-thong-tin">{% if bai.data.bo_truyen %}Kỳ {{ bai.data.ky }} · {% endif %}{{ bai.data.soPhutDoc }} phút đọc</p>
+  </div>
+</article>

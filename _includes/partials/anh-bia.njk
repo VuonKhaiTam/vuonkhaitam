@@ -1,0 +1,6 @@
+{#- Ảnh bìa đầu bài: không tải chậm, được ưu tiên tải trước -#}
+{%- if anh_bia %}
+<figure class="anh-bia">
+  <img src="{{ anh_bia }}" alt="{{ anh_bia_mo_ta }}" loading="eager" fetchpriority="high" sizes="(min-width: 760px) 680px, 100vw">
+</figure>
+{%- endif %}

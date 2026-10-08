@@ -1,0 +1,44 @@
+---
+layout: layouts/co-so.njk
+lop_body: trang-truyen
+---
+{#- Mục lục bộ truyện. Cần biến: maBoTruyen -#}
+{%- set bt = dsBoTruyen[maBoTruyen] -%}
+{%- set dsKy = collections.boTruyen[maBoTruyen] or [] -%}
+<div class="khung-hep">
+  <nav class="vi-tri" aria-label="Vị trí trong web">
+    <ol>
+      <li><a href="/">Trang chủ</a></li>
+      <li><a href="/truyen/">Truyện</a></li>
+    </ol>
+  </nav>
+  {%- if bt.mau %}
+  <p class="bai-mau" role="note"><strong>Bộ truyện mẫu.</strong> Chỉ để thử giao diện, sẽ được ẩn trước khi web ra mắt.</p>
+  {%- endif %}
+  <p class="cac-nhan">
+    <span class="nhan nhan-truyen">Truyện nhiều kỳ</span>
+    {%- if bt.do_tuoi %}<span class="nhan-tuoi">{{ bt.do_tuoi | khoangTuoi }}</span>{% endif %}
+    <span class="nhan {{ 'nhan-hieu-qua' if bt.trang_thai == 'hoan-thanh' else 'nhan-dang-thu' }}">{{ "Hoàn thành" if bt.trang_thai == "hoan-thanh" else "Đang đăng" }}</span>
+  </p>
+  <h1>{{ bt.ten }}</h1>
+  {%- if bt.anh_bia %}
+  <figure class="anh-bia"><img src="{{ bt.anh_bia }}" alt="Ảnh bìa bộ truyện {{ bt.ten }}" loading="eager" fetchpriority="high" sizes="(min-width: 760px) 680px, 100vw"></figure>
+  {%- endif %}
+  <p class="mo-ta-lon">{{ bt.mo_ta }}</p>
+  {%- if bt.chu_de %}<p class="phu">Chủ đề: {{ bt.chu_de | tenCacChuDe }}</p>{% endif %}
+
+  <h2>Các kỳ</h2>
+  {%- if dsKy.length %}
+  <ol class="ds-ky">
+    {%- for ky in dsKy %}
+    <li>
+      <a href="{{ ky.url }}"><span class="ds-ky-so">Kỳ {{ ky.data.ky }}</span> {{ ky.data.ten_ky or ky.data.title }}</a>
+      <span class="phu">{{ ky.data.soPhutDoc }} phút đọc</span>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- if bt.trang_thai != "hoan-thanh" %}<p class="phu">Các kỳ tiếp theo sẽ lần lượt được đăng.</p>{% endif %}
+  {%- else %}
+  <p class="trong">Kỳ đầu tiên sắp được đăng.</p>
+  {%- endif %}
+</div>

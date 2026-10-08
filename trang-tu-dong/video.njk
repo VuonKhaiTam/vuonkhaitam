@@ -1,0 +1,23 @@
+---
+layout: layouts/co-so.njk
+title: Video
+mo_ta: "Các bài có video trong Vườn Khai Tâm."
+permalink: /video/
+---
+{#- Trang này luôn được tạo, nhưng chỉ hiện trên menu khi có từ 3 bài có video trở lên -#}
+<div class="khung">
+  <header class="dau-danh-sach">
+    <h1>Video</h1>
+    <p class="mo-ta-lon">Các bài có video. Video chỉ tải khi anh chị bấm nút phát.</p>
+  </header>
+  {%- if collections.coVideo.length %}
+  <div class="luoi-the">
+    {%- set capThe = "h2" %}
+    {%- for bai in collections.coVideo %}
+    {% include "partials/the-bai.njk" %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p class="trong">Chưa có bài nào có video.</p>
+  {%- endif %}
+</div>

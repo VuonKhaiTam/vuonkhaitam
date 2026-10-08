@@ -1,0 +1,36 @@
+---
+layout: layouts/co-so.njk
+lop_body: trang-hoc
+---
+{#- Bài Học cùng con: hộp thông tin, truyện liên quan, nội dung, câu hỏi cuối buổi, nút In / Lưu PDF -#}
+{%- set baiNay = collections.tatCaBai | timTheoUrl(page.url) -%}
+{%- set dongThongTin = [
+  { nhan: "Mục tiêu", gia_tri: muc_tieu },
+  { nhan: "Tuổi", gia_tri: do_tuoi | khoangTuoi },
+  { nhan: "Thời gian", gia_tri: (thoi_gian_phut + " phút") if thoi_gian_phut else "" },
+  { nhan: "Vật liệu", gia_tri: (vat_lieu or []) | join(", ") },
+  { nhan: "Nơi làm", gia_tri: noi_lam }
+] -%}
+<article class="bai khung-hep">
+  {% include "partials/dau-bai.njk" %}
+  {% include "partials/hop-thong-tin.njk" %}
+  {%- if truyen_lien_quan %}
+  {%- set truyenLQ = collections.tatCaBai | timTheoUrl(truyen_lien_quan) %}
+  {%- if truyenLQ %}
+  <p class="truyen-lien-quan">Đọc cùng truyện: <a href="{{ truyenLQ.url }}">{{ truyenLQ.data.title }}</a></p>
+  {%- endif %}
+  {%- endif %}
+  {% include "partials/anh-bia.njk" %}
+  {% include "partials/video.njk" %}
+  <div class="noi-dung">
+    {{ content | safe }}
+  </div>
+  {% include "partials/cau-hoi-goi-mo.njk" %}
+  {%- set chuNutIn = "In / Lưu PDF" %}
+  {% include "partials/nut-in.njk" %}
+  {% include "partials/chia-se.njk" %}
+  <p class="nguon-in">Từ {{ (page.url | tuyetDoi) | replace("https://", "") }} · {{ site.tac_gia }}</p>
+</article>
+<div class="khung">
+  {% include "partials/bai-lien-quan.njk" %}
+</div>

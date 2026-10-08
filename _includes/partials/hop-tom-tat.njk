@@ -1,0 +1,10 @@
+{%- if tom_tat and tom_tat.length %}
+<aside class="hop hop-tom-tat" aria-labelledby="tieu-de-tom-tat">
+  <h2 class="tieu-de-hop" id="tieu-de-tom-tat">Tóm tắt nhanh</h2>
+  <ul>
+    {%- for y in tom_tat %}
+    <li>{{ y }}</li>
+    {%- endfor %}
+  </ul>
+</aside>
+{%- endif %}

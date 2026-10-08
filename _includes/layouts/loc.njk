@@ -1,0 +1,30 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Trang chủ đề / độ tuổi. Cần biến: nhomLoc ({ ma, ten, mo_ta }), dsBai -#}
+{%- set cacNhomLoc = [{ ma: "loai", ten: "Loại bài", muc: dsLoaiBai }] -%}
+{%- set dsBai = collections[boSuuTap][nhomLoc.ma] or [] -%}
+<div class="khung">
+  <header class="dau-danh-sach">
+    <nav class="vi-tri" aria-label="Vị trí trong web">
+      <ol>
+        <li><a href="/">Trang chủ</a></li>
+        <li><a href="{{ urlCha }}">{{ tenCha }}</a></li>
+      </ol>
+    </nav>
+    <h1>{{ title }}</h1>
+    {%- if nhomLoc.nhom %}<p class="phu">{{ nhomLoc.nhom }}</p>{% endif %}
+    <p class="mo-ta-lon">{{ nhomLoc.mo_ta }}</p>
+  </header>
+  {%- if dsBai and dsBai.length %}
+  {% include "partials/bo-loc.njk" %}
+  <div class="luoi-the" data-luoi-loc>
+    {%- set capThe = "h2" %}
+    {%- for bai in dsBai %}
+    {% include "partials/the-bai.njk" %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p class="trong">Chưa có bài nào ở mục này. Vườn đang gieo hạt, anh chị ghé lại sau nhé.</p>
+  {%- endif %}
+</div>

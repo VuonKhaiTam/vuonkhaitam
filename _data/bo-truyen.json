@@ -1,0 +1,11 @@
+{
+  "truyen-mau": {
+    "ten": "Truyện mẫu: Hạt mầm biết chờ",
+    "mo_ta": "Bộ truyện mẫu ba kỳ để thử giao diện đăng nhiều kỳ. Sẽ được thay bằng truyện thật trước khi ra mắt.",
+    "do_tuoi": ["6-8", "9-11"],
+    "chu_de": ["cam-xuc", "gan-ket"],
+    "anh_bia": "",
+    "trang_thai": "dang-dang",
+    "mau": true
+  }
+}

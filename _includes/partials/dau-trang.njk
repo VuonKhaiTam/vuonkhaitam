@@ -1,0 +1,45 @@
+{#- Đầu trang: logo ngang, menu ngang (máy tính), nút ☰ mở menu đầy đủ -#}
+{%- set menuChinh = [
+  { ten: "Góc cha mẹ", url: "/goc-cha-me/" },
+  { ten: "Truyện", url: "/truyen/" },
+  { ten: "Học cùng con", url: "/hoc-cung-con/" },
+  { ten: "Nhật ký vườn ươm", url: "/nhat-ky/" }
+] -%}
+{%- set menuDayDu = menuChinh.concat([
+  { ten: "Chủ đề", url: "/chu-de/" },
+  { ten: "Độ tuổi", url: "/do-tuoi/" },
+  { ten: "Tủ sách", url: "/tu-sach/" },
+  { ten: "Giới thiệu", url: "/gioi-thieu/" },
+  { ten: "Liên hệ", url: "/lien-he/" },
+  { ten: "Tìm kiếm", url: "/tim-kiem/" }
+]) -%}
+{%- if collections.coVideo and collections.coVideo.length >= 3 %}{% set menuDayDu = menuDayDu.concat([{ ten: "Video", url: "/video/" }]) %}{% endif -%}
+<header class="dau-trang">
+  <div class="dau-trang-trong">
+    <a class="logo-ngang" href="/" aria-label="Vườn Khai Tâm, về trang chủ">
+      <img eleventy:ignore class="logo-hinh" src="/assets/logo/logo-hinh-48.webp" srcset="/assets/logo/logo-hinh-48.webp 1x, /assets/logo/logo-hinh-96.webp 2x" width="42" height="44" alt="">
+      <span class="logo-chu"><span class="logo-vuon">Vườn</span> Khai Tâm</span>
+    </a>
+    <nav class="menu-ngang" aria-label="Mục chính">
+      <ul>
+        {%- for muc in menuChinh %}
+        <li><a href="{{ muc.url }}"{% if page.url.startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
+        {%- endfor %}
+        <li class="chi-may-lon"><a href="/tu-sach/"{% if page.url.startsWith("/tu-sach/") %} aria-current="page"{% endif %}>Tủ sách</a></li>
+        <li class="chi-may-lon"><a href="/gioi-thieu/"{% if page.url.startsWith("/gioi-thieu/") %} aria-current="page"{% endif %}>Giới thiệu</a></li>
+        <li><a class="menu-tim" href="/tim-kiem/" aria-label="Tìm kiếm"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></li>
+      </ul>
+    </nav>
+    <button class="nut-menu" type="button" aria-expanded="false" aria-controls="menu-day-du" hidden>
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="an-chu">Mở menu</span>
+    </button>
+  </div>
+  <nav id="menu-day-du" class="menu-day-du" aria-label="Tất cả các mục" hidden>
+    <ul>
+      {%- for muc in menuDayDu %}
+      <li><a href="{{ muc.url }}"{% if page.url.startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+</header>

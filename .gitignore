@@ -1,0 +1,24 @@
+# Thư viện và kết quả dựng web (tự tạo lại được)
+node_modules/
+_site/
+.cache/
+
+# Bí mật, cấu hình riêng trên máy
+.env*
+*.local.*
+
+# Tư liệu riêng tư: không bao giờ đưa lên GitHub
+*.docx
+*.doc
+*.psd
+*.heic
+*.HEIC
+nhap/
+
+# File rác của hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Cấu hình công cụ trên máy
+.claude/
+.vscode/

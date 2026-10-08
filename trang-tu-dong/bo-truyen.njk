@@ -1,0 +1,11 @@
+---
+pagination:
+  data: dsBoTruyen
+  size: 1
+  alias: maBoTruyen
+layout: layouts/bo-truyen.njk
+eleventyComputed:
+  title: "{{ dsBoTruyen[maBoTruyen].ten }}"
+  mo_ta: "{{ dsBoTruyen[maBoTruyen].mo_ta }}"
+permalink: "/truyen/{{ maBoTruyen }}/"
+---

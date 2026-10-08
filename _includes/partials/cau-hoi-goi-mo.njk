@@ -1,0 +1,31 @@
+{#- Hộp câu hỏi gợi mở.
+    Truyện: cau_hoi = { nho_lai: [], cam_nhan: [], lien_he: [] } (3 tầng)
+    Học cùng con: cau_hoi_cuoi = [] -#}
+{%- set tang = [
+  { ma: "nho_lai", ten: "Nhớ lại" },
+  { ma: "cam_nhan", ten: "Cảm nhận" },
+  { ma: "lien_he", ten: "Liên hệ" }
+] -%}
+{%- if cau_hoi %}
+<section class="hop hop-cau-hoi" aria-labelledby="tieu-de-cau-hoi">
+  <h2 class="tieu-de-hop" id="tieu-de-cau-hoi">Trò chuyện cùng con</h2>
+  <p class="hop-ghi-chu">Không có câu trả lời đúng hay sai. Cha mẹ hỏi, lắng nghe, và có thể kể suy nghĩ của chính mình.</p>
+  {%- for t in tang %}{% if cau_hoi[t.ma] and cau_hoi[t.ma].length %}
+  <h3 class="tang-cau-hoi">{{ t.ten }}</h3>
+  <ul>
+    {%- for c in cau_hoi[t.ma] %}
+    <li>{{ c }}<span class="dong-ke" aria-hidden="true"></span></li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}{% endfor %}
+</section>
+{%- elif cau_hoi_cuoi and cau_hoi_cuoi.length %}
+<section class="hop hop-cau-hoi" aria-labelledby="tieu-de-cau-hoi">
+  <h2 class="tieu-de-hop" id="tieu-de-cau-hoi">Câu hỏi cuối buổi</h2>
+  <ol>
+    {%- for c in cau_hoi_cuoi %}
+    <li>{{ c }}<span class="dong-ke" aria-hidden="true"></span><span class="dong-ke" aria-hidden="true"></span><span class="dong-ke" aria-hidden="true"></span></li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endif %}

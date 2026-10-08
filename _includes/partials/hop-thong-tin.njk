@@ -1,0 +1,8 @@
+{#- Hộp thông tin. Cần biến: dongThongTin = [{ nhan, gia_tri }] -#}
+<aside class="hop hop-thong-tin" aria-label="Thông tin nhanh">
+  <dl>
+    {%- for dong in dongThongTin %}{% if dong.gia_tri %}
+    <div><dt>{{ dong.nhan }}</dt><dd>{{ dong.gia_tri }}</dd></div>
+    {%- endif %}{% endfor %}
+  </dl>
+</aside>

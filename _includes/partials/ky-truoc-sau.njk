@@ -1,0 +1,10 @@
+{#- Điều hướng Kỳ trước / Mục lục / Kỳ sau. Cần biến: kyKe, bo_truyen -#}
+<nav class="ky-truoc-sau" aria-label="Các kỳ của bộ truyện">
+  {%- if kyKe.truoc %}
+  <a class="ky-truoc" href="{{ kyKe.truoc.url }}" rel="prev"><span aria-hidden="true">←</span> Kỳ {{ kyKe.truoc.data.ky }}</a>
+  {%- else %}<span class="ky-trong"></span>{% endif %}
+  <a class="ky-muc-luc" href="/truyen/{{ bo_truyen }}/">Mục lục</a>
+  {%- if kyKe.sau %}
+  <a class="ky-sau" href="{{ kyKe.sau.url }}" rel="next">Kỳ {{ kyKe.sau.data.ky }} <span aria-hidden="true">→</span></a>
+  {%- else %}<span class="ky-trong"></span>{% endif %}
+</nav>

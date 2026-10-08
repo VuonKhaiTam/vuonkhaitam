@@ -1,0 +1,91 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Trang chủ: lời chào, chọn tuổi, truyện nổi bật, bài mới, học cùng con, nhật ký, chủ đề, nhận bài mới -#}
+{%- set tatCa = collections.tatCaBai or [] -%}
+{%- set dsTruyen = collections.theoLoai["truyen"] or [] -%}
+{#- Truyện nổi bật: bài truyện có noi_bat: true, nếu không có thì lấy truyện mới nhất -#}
+{%- set truyenNoiBat = null -%}
+{%- for b in dsTruyen %}{% if b.data.noi_bat and not truyenNoiBat %}{% set truyenNoiBat = b %}{% endif %}{% endfor -%}
+{%- if not truyenNoiBat %}{% set truyenNoiBat = dsTruyen[0] %}{% endif -%}
+{%- set baiMoi = (tatCa | boQua(truyenNoiBat)) | dau(3) -%}
+{%- set hocMoi = (collections.theoLoai["hoc-cung-con"] or [])[0] -%}
+{%- set nhatKyMoi = (collections.theoLoai["nhat-ky"] or [])[0] -%}
+
+<section class="chao">
+  <div class="khung chao-trong">
+    <img eleventy:ignore class="chao-logo" src="/assets/logo/logo-day-du-360.webp" width="180" height="197" alt="Logo Khai Tâm: em bé nâng mầm cây trong đôi bàn tay lá" fetchpriority="high">
+    <div class="chao-chu">
+      <p class="chao-khau-hieu">{{ site.khau_hieu }}</p>
+      <h1>Mỗi đứa trẻ là một hạt giống đang chờ được khai mở</h1>
+      <p class="mo-ta-lon">{{ site.mo_ta }}</p>
+      <h2 class="chon-tuoi-hoi" id="chon-tuoi">Con anh chị bao nhiêu tuổi?</h2>
+      <ul class="chon-tuoi" aria-labelledby="chon-tuoi">
+        {%- for t in dsDoTuoi %}
+        <li><a class="nut-tuoi" href="/do-tuoi/{{ t.ma }}/"><span class="nut-tuoi-so">{{ t.ten }}</span><span class="nut-tuoi-nhom">{{ t.nhom }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="khung">
+  {%- if truyenNoiBat %}
+  <section class="khu" aria-labelledby="tieu-de-truyen-noi-bat">
+    <h2 id="tieu-de-truyen-noi-bat">Truyện nổi bật</h2>
+    <div class="the-noi-bat">
+      {%- set bai = truyenNoiBat %}
+      {% include "partials/the-bai.njk" %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if baiMoi.length %}
+  <section class="khu" aria-labelledby="tieu-de-bai-moi">
+    <h2 id="tieu-de-bai-moi">Bài mới</h2>
+    <div class="luoi-the">
+      {%- for bai in baiMoi %}
+      {% include "partials/the-bai.njk" %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  <div class="hai-cot">
+    {%- if hocMoi %}
+    <section class="khu" aria-labelledby="tieu-de-hoc-moi">
+      <h2 id="tieu-de-hoc-moi">Học cùng con</h2>
+      {%- set bai = hocMoi %}
+      {% include "partials/the-bai.njk" %}
+      <p><a class="link-xem-them" href="/hoc-cung-con/">Xem tất cả hoạt động <span aria-hidden="true">→</span></a></p>
+    </section>
+    {%- endif %}
+    {%- if nhatKyMoi %}
+    <section class="khu" aria-labelledby="tieu-de-nhat-ky-moi">
+      <h2 id="tieu-de-nhat-ky-moi">Từ nhật ký vườn ươm</h2>
+      {%- set bai = nhatKyMoi %}
+      {% include "partials/the-bai.njk" %}
+      <p><a class="link-xem-them" href="/nhat-ky/">Đọc thêm nhật ký <span aria-hidden="true">→</span></a></p>
+    </section>
+    {%- endif %}
+  </div>
+
+  <section class="khu" aria-labelledby="tieu-de-chu-de">
+    <h2 id="tieu-de-chu-de">Chủ đề</h2>
+    <ul class="ds-chu-de">
+      {%- for cd in dsChuDe %}
+      <li><a href="/chu-de/{{ cd.ma }}/">{{ cd.ten }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="khu hop-nhan-bai" aria-labelledby="tieu-de-nhan-bai">
+    <h2 id="tieu-de-nhan-bai">Nhận bài mới</h2>
+    <p>Mỗi tuần Vườn có một bài mới: truyện, bài học, hoặc một trang nhật ký.</p>
+    {%- if site.lien_he.facebook %}
+    <p><a class="nut" href="{{ site.lien_he.facebook }}" rel="noopener">Theo dõi trang Facebook Vườn Khai Tâm</a></p>
+    {%- elif site.lien_he.email %}
+    <p>Anh chị có thể gửi thư góp ý hoặc đề nghị chủ đề tới <a href="mailto:{{ site.lien_he.email }}">{{ site.lien_he.email }}</a>.</p>
+    {%- endif %}
+  </section>
+</div>

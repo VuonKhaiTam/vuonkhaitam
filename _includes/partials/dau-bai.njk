@@ -1,0 +1,29 @@
+{#- Phần đầu chung của mọi bài: vị trí, nhãn, tiêu đề, dòng thông tin -#}
+{%- set lb = loai | loaiBai -%}
+<nav class="vi-tri" aria-label="Vị trí trong web">
+  <ol>
+    <li><a href="/">Trang chủ</a></li>
+    <li><a href="{{ lb.duong_dan }}">{{ lb.ten }}</a></li>
+    {%- if boTruyenNay %}
+    <li><a href="/truyen/{{ bo_truyen }}/">{{ boTruyenNay.ten }}</a></li>
+    {%- endif %}
+  </ol>
+</nav>
+{%- if mau %}
+<p class="bai-mau" role="note"><strong>Bài mẫu.</strong> Bài này chỉ để thử giao diện và sẽ được ẩn trước khi web ra mắt.</p>
+{%- endif %}
+<p class="cac-nhan">
+  <span class="nhan nhan-{{ lb.nhan }}">{{ lb.ten }}</span>
+  {%- if do_tuoi and do_tuoi.length %}<span class="nhan-tuoi">{{ do_tuoi | khoangTuoi }}</span>{% endif %}
+  {%- if nhanThem %}<span class="nhan {{ nhanThem.lop }}">{{ nhanThem.ten }}</span>{% endif %}
+</p>
+{%- if boTruyenNay %}
+<p class="ky-dau-de">Bộ truyện: <a href="/truyen/{{ bo_truyen }}/">{{ boTruyenNay.ten }}</a></p>
+{%- endif %}
+<h1 class="bai-tieu-de">{{ title }}</h1>
+<p class="dong-thong-tin">
+  <a href="/gioi-thieu/">{{ site.tac_gia }}</a> ·
+  <time datetime="{{ page.date | ngayIso }}">{{ page.date | ngay }}</time>
+  {%- if cap_nhat %} · cập nhật <time datetime="{{ cap_nhat | ngayIso }}">{{ cap_nhat | ngay }}</time>{% endif %}
+  · {{ soPhutDoc }} phút đọc
+</p>

@@ -1,0 +1,11 @@
+---
+pagination:
+  data: dsLoaiBai
+  size: 1
+  alias: loaiHienTai
+layout: layouts/danh-sach.njk
+eleventyComputed:
+  title: "{{ loaiHienTai.ten }}"
+  mo_ta: "{{ loaiHienTai.mo_ta }}"
+permalink: "{{ loaiHienTai.duong_dan }}"
+---

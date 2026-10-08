@@ -1,0 +1,14 @@
+{#- Thanh điều hướng cố định ở đáy, chỉ hiện trên điện thoại (< 768px) -#}
+{%- set mucDay = [
+  { ten: "Trang chủ", url: "/", hinh: '<path d="M4 11.5 12 5l8 6.5V20h-5.5v-5h-5v5H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' },
+  { ten: "Cha mẹ", url: "/goc-cha-me/", hinh: '<path d="M12 20c0-6 2-10 8-12-1 7-4 11-8 12zM12 20c0-5-2-8-7-9 .5 5 3 8 7 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 20v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>' },
+  { ten: "Truyện", url: "/truyen/", hinh: '<path d="M12 7c-2-1.5-5-2-8-1.5V18c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5.5C17 5 14 5.5 12 7zM12 7v12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' },
+  { ten: "Học", url: "/hoc-cung-con/", hinh: '<path d="m14.5 5.5 4 4L9 19H5v-4zM12.5 7.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' },
+  { ten: "Tìm", url: "/tim-kiem/", hinh: '<circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>' }
+] -%}
+<nav class="thanh-day" aria-label="Điều hướng nhanh">
+  {%- for muc in mucDay %}
+  {%- set dangO = (page.url == "/") if muc.url == "/" else page.url.startsWith(muc.url) %}
+  <a href="{{ muc.url }}"{% if dangO %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">{{ muc.hinh | safe }}</svg><span>{{ muc.ten }}</span></a>
+  {%- endfor %}
+</nav>

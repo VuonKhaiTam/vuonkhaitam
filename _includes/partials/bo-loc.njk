@@ -1,0 +1,14 @@
+{#- Hàng nút lọc. Cần biến: cacNhomLoc = [{ ma: "tuoi"|"chu-de"|"loai", ten, muc: [{ ma, ten }] }]
+    Chỉ hiện khi có JavaScript (chinh.js bỏ thuộc tính hidden). Không có JavaScript thì hiện tất cả bài. -#}
+<div class="bo-loc" data-bo-loc hidden>
+  {%- for nhom in cacNhomLoc %}
+  <div class="hang-loc" role="group" aria-label="Lọc theo {{ nhom.ten | lower }}" data-nhom="{{ nhom.ma }}">
+    <span class="hang-loc-ten">{{ nhom.ten }}</span>
+    <button type="button" class="nut-loc" data-gia-tri="" aria-pressed="true">Tất cả</button>
+    {%- for muc in nhom.muc %}
+    <button type="button" class="nut-loc" data-gia-tri="{{ muc.ma }}" aria-pressed="false">{{ muc.ten }}</button>
+    {%- endfor %}
+  </div>
+  {%- endfor %}
+  <p class="ket-qua-loc" role="status"></p>
+</div>

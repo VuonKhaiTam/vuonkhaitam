@@ -1,0 +1,12 @@
+{#- Nút chia sẻ. Có JavaScript: dùng bảng chia sẻ của điện thoại (có sẵn Zalo, Facebook),
+    hoặc nút "Sao chép liên kết". Không nhúng mã của Zalo hay Facebook. -#}
+{%- set urlDayDu = page.url | tuyetDoi -%}
+<div class="chia-se" data-url="{{ urlDayDu }}" data-tieu-de="{{ title }}">
+  <button class="nut nut-chia-se" type="button" hidden>
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v11M7.5 8.5 12 4l4.5 4.5M5 13v6h14v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Chia sẻ
+  </button>
+  <button class="nut nut-vien nut-sao-chep" type="button" hidden>Sao chép liên kết</button>
+  <a class="nut nut-vien nut-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ urlDayDu | urlencode }}" rel="noopener" target="_blank">Chia sẻ lên Facebook</a>
+  <span class="chia-se-bao" role="status"></span>
+</div>

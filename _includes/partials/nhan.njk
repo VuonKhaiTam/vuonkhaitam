@@ -1,0 +1,4 @@
+{#- Nhãn loại bài + nhãn tuổi. Cần biến: bai (mục trong collection) -#}
+{%- set lbNhan = bai.data.loai | loaiBai -%}
+<span class="nhan nhan-{{ lbNhan.nhan }}">{{ lbNhan.ten }}</span>
+{%- if bai.data.do_tuoi and bai.data.do_tuoi.length %}<span class="nhan-tuoi">{{ bai.data.do_tuoi | khoangTuoi }}</span>{% endif %}

@@ -1,0 +1,14 @@
+---
+pagination:
+  data: dsChuDe
+  size: 1
+  alias: nhomLoc
+layout: layouts/loc.njk
+urlCha: /chu-de/
+tenCha: Chủ đề
+boSuuTap: theoChuDe
+eleventyComputed:
+  title: "{{ nhomLoc.ten }}"
+  mo_ta: "{{ nhomLoc.mo_ta }}"
+permalink: "/chu-de/{{ nhomLoc.ma }}/"
+---

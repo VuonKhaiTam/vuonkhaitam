@@ -1,0 +1,11 @@
+{%- set dsLienQuan = collections.tatCaBai | baiLienQuan(baiNay or { url: page.url, data: { lien_quan: lien_quan, chu_de: chu_de } }) -%}
+{%- if dsLienQuan.length %}
+<section class="lien-quan" aria-labelledby="tieu-de-lien-quan">
+  <h2 id="tieu-de-lien-quan">Bài liên quan</h2>
+  <div class="luoi-the">
+    {%- for bai in dsLienQuan %}
+    {% include "partials/the-bai.njk" %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}

@@ -1,0 +1,56 @@
+---
+layout: layouts/co-so.njk
+---
+{#- Trang tĩnh: Giới thiệu, Liên hệ, Tủ sách, 404 -#}
+<article class="khung-hep trang-tinh">
+  <h1>{{ title }}</h1>
+  {%- if mo_dau %}<p class="mo-ta-lon">{{ mo_dau }}</p>{% endif %}
+  <div class="noi-dung">
+    {{ content | safe }}
+  </div>
+
+  {%- if hien_lien_he %}
+  <ul class="ds-lien-he">
+    {%- if site.lien_he.facebook %}
+    <li><span class="phu">Trang Facebook</span><a href="{{ site.lien_he.facebook }}" rel="noopener">Vườn Khai Tâm trên Facebook</a></li>
+    {%- endif %}
+    {%- if site.lien_he.email %}
+    <li><span class="phu">Email</span><a href="mailto:{{ site.lien_he.email }}">{{ site.lien_he.email }}</a></li>
+    {%- endif %}
+  </ul>
+  {%- endif %}
+
+  {%- if hien_tu_sach %}
+  {%- set trangThaiSach = { "dang-hoan-thien": "Đang hoàn thiện", "doc-thu": "Đọc thử", "da-phat-hanh": "Đã phát hành" } %}
+  <div class="luoi-sach">
+    {%- for sach in tuSach %}
+    <article class="the-sach">
+      {%- if sach.anh %}<img class="the-sach-anh" src="{{ sach.anh }}" alt="Bìa sách {{ sach.ten }}" sizes="(min-width: 600px) 200px, 40vw">{% else %}<div class="the-sach-anh anh-tam" aria-hidden="true"></div>{% endif %}
+      <div class="the-sach-than">
+        <p class="cac-nhan"><span class="nhan nhan-truyen">{{ trangThaiSach[sach.trang_thai] }}</span>{% if sach.do_tuoi %}<span class="nhan-tuoi">{{ sach.do_tuoi | khoangTuoi }}</span>{% endif %}</p>
+        <h2 class="the-sach-ten">{{ sach.ten }}</h2>
+        <p>{{ sach.mo_ta }}</p>
+        {%- if sach.lien_ket %}
+        <a class="nut" href="{{ sach.lien_ket }}">Xem sách</a>
+        {%- elif site.lien_he.facebook %}
+        <a class="nut nut-vien" href="{{ site.lien_he.facebook }}" rel="noopener">Nhận thông báo</a>
+        {%- else %}
+        <a class="nut nut-vien" href="/lien-he/">Nhận thông báo</a>
+        {%- endif %}
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+  {%- if hien_tim_kiem %}
+  <form class="o-tim" role="search" action="/tim-kiem/" data-o-tim>
+    <label for="o-tim-404">Tìm bài trong Vườn</label>
+    <div class="o-tim-hang">
+      <input id="o-tim-404" type="search" name="q" autocomplete="off" placeholder="Ví dụ: con hay cáu giận">
+      <button class="nut" type="submit">Tìm</button>
+    </div>
+  </form>
+  <p><a class="nut nut-vien" href="/">Về trang chủ</a></p>
+  {%- endif %}
+</article>
