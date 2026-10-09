@@ -121,11 +121,49 @@ export default function (eleventyConfig) {
     return ketQua;
   });
 
-  // Kỳ trước / kỳ sau trong cùng bộ truyện
+  // Kỳ trước / kỳ sau trong cùng bộ truyện, kèm vị trí kỳ hiện tại (thứ mấy / tổng số kỳ)
   eleventyConfig.addFilter("kyKeBen", (dsKy, url) => {
-    const i = (dsKy || []).findIndex((b) => b.url === url);
-    return { truoc: i > 0 ? dsKy[i - 1] : null, sau: i >= 0 && i < dsKy.length - 1 ? dsKy[i + 1] : null };
+    const ds = dsKy || [];
+    const i = ds.findIndex((b) => b.url === url);
+    return {
+      truoc: i > 0 ? ds[i - 1] : null,
+      sau: i >= 0 && i < ds.length - 1 ? ds[i + 1] : null,
+      thuTu: i + 1,
+      tong: ds.length,
+    };
   });
+  // Truyện 1 trang (không thuộc bộ truyện nào): dùng cho trang /truyen/, các kỳ đã gom vào thẻ bộ truyện
+  eleventyConfig.addFilter("truyenMotTrang", (ds) => (ds || []).filter((b) => !b.data.bo_truyen));
+  // Thời gian đọc trung bình mỗi kỳ của một bộ truyện
+  eleventyConfig.addFilter("phutMoiKy", (dsKy) => {
+    const ds = dsKy || [];
+    return ds.length ? Math.round(ds.reduce((tong, b) => tong + (b.data.soPhutDoc || 1), 0) / ds.length) : 0;
+  });
+
+  // ---------- Ảnh chia sẻ (Open Graph): cắt ảnh bìa thành 1200×630, JPEG chất lượng 82 ----------
+  // Lưu ở /og/<loai>-<duong_dan>.jpg. Bài không có ảnh bìa dùng ảnh chia sẻ mặc định.
+  const OG_MAC_DINH = "/assets/logo/og-mac-dinh.jpg";
+  eleventyConfig.addAsyncFilter("anhChiaSe", async (anhBia, ten) => {
+    if (!anhBia || !String(anhBia).startsWith("/anh/")) return OG_MAC_DINH;
+    try {
+      const meta = await Image(`.${anhBia}`, {
+        widths: [1200],
+        formats: ["jpeg"],
+        outputDir: "_site/og/",
+        urlPath: "/og/",
+        filenameFormat: () => `${ten}.jpg`,
+        sharpJpegOptions: { quality: 82, mozjpeg: true },
+        transform: (s) => s.resize({ width: 1200, height: 630, fit: "cover" }),
+      });
+      return meta.jpeg[0].url;
+    } catch (loi) {
+      console.warn(`[anh-chia-se] Không tạo được ảnh chia sẻ cho ${ten}: ${loi.message}`);
+      return OG_MAC_DINH;
+    }
+  });
+
+  // Dữ liệu có cấu trúc (JSON-LD) cho Google. Đổi "<" để không thể đóng thẻ <script> sớm.
+  eleventyConfig.addFilter("jsonLd", (doiTuong) => JSON.stringify(doiTuong).replace(/</g, "\\u003c"));
 
   // ---------- Video YouTube ----------
   eleventyConfig.addAsyncShortcode("video", (url) => khoiVideo(url));
@@ -145,7 +183,7 @@ export default function (eleventyConfig) {
 
   return {
     dir: { input: ".", includes: "_includes", data: "_data", output: "_site" },
-    templateFormats: ["md", "njk"],
+    templateFormats: ["md", "njk", "11ty.js"],
     // Bài viết .md không chạy mã khuôn bên trong: dấu {{ hay {% trong bài không làm hỏng web.
     markdownTemplateEngine: false,
     htmlTemplateEngine: "njk",

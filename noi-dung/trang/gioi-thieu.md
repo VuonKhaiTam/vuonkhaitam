@@ -30,3 +30,5 @@ Vườn Khai Tâm **không bao giờ đăng**:
 Với **Nhật ký vườn ươm**, mỗi bài đều qua 5 lớp ẩn danh: không có tên, chỉ ghi nhóm tuổi, đã đổi những chi tiết không quan trọng, để "nguội" ít nhất 2 tuần, và **chỉ đăng khi con đã nghe và đồng ý**. Con có quyền yêu cầu gỡ bài bất cứ lúc nào.
 
 Web này **không dùng cookie, không gắn công cụ theo dõi người đọc, không quảng cáo**. Ảnh đăng lên đều đã được xóa thông tin ẩn (như vị trí chụp). Video YouTube chỉ tải khi anh chị bấm nút phát.
+
+Với truyện nhiều kỳ, trình duyệt của anh chị tự ghi nhớ những kỳ đã đọc, để lần sau mở lại biết đọc tiếp từ đâu. Ghi nhớ này **chỉ nằm trên máy của anh chị, không gửi về Vườn hay bất kỳ ai**. Anh chị xóa được bất cứ lúc nào bằng cách xóa dữ liệu trang web trong cài đặt trình duyệt.

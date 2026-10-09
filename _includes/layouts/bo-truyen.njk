@@ -2,10 +2,13 @@
 layout: layouts/co-so.njk
 lop_body: trang-truyen
 ---
-{#- Mục lục bộ truyện. Cần biến: maBoTruyen -#}
+{#- Mục lục bộ truyện. Cần biến: maBoTruyen.
+    Bố cục: giới thiệu bộ truyện → nút "Bắt đầu đọc" (và "Đọc tiếp" nếu máy này đã đọc dở)
+    → cách đọc cùng con → các kỳ xếp theo dòng thời gian. -#}
 {%- set bt = dsBoTruyen[maBoTruyen] -%}
 {%- set dsKy = collections.boTruyen[maBoTruyen] or [] -%}
-<div class="khung-hep">
+{%- set dangDang = bt.trang_thai != "hoan-thanh" -%}
+<div class="khung-hep" data-muc-luc="{{ maBoTruyen }}">
   <nav class="vi-tri" aria-label="Vị trí trong web">
     <ol>
       <li><a href="/">Trang chủ</a></li>
@@ -18,26 +21,53 @@ lop_body: trang-truyen
   <p class="cac-nhan">
     <span class="nhan nhan-truyen">Truyện nhiều kỳ</span>
     {%- if bt.do_tuoi %}<span class="nhan-tuoi">{{ bt.do_tuoi | khoangTuoi }}</span>{% endif %}
-    <span class="nhan {{ 'nhan-hieu-qua' if bt.trang_thai == 'hoan-thanh' else 'nhan-dang-thu' }}">{{ "Hoàn thành" if bt.trang_thai == "hoan-thanh" else "Đang đăng" }}</span>
+    <span class="nhan {{ 'nhan-dang-thu' if dangDang else 'nhan-hieu-qua' }}">{{ "Đang đăng" if dangDang else "Hoàn thành" }}</span>
   </p>
   <h1>{{ bt.ten }}</h1>
   {%- if bt.anh_bia %}
   <figure class="anh-bia"><img src="{{ bt.anh_bia }}" alt="Ảnh bìa bộ truyện {{ bt.ten }}" loading="eager" fetchpriority="high" sizes="(min-width: 760px) 680px, 100vw"></figure>
   {%- endif %}
   <p class="mo-ta-lon">{{ bt.mo_ta }}</p>
-  {%- if bt.chu_de %}<p class="phu">Chủ đề: {{ bt.chu_de | tenCacChuDe }}</p>{% endif %}
+  {%- if dsKy.length %}
+  <p class="bt-so-lieu">
+    <span><strong>{{ dsKy.length }}</strong> kỳ{% if dangDang %} đã đăng{% endif %}</span>
+    <span>khoảng <strong>{{ dsKy | phutMoiKy }}</strong> phút mỗi kỳ</span>
+    {%- if bt.chu_de %}<span>{{ bt.chu_de | tenCacChuDe }}</span>{% endif %}
+  </p>
+  <p class="bt-nut">
+    <a class="nut" href="{{ dsKy[0].url }}">Bắt đầu đọc từ Kỳ 1</a>
+    {#- chinh.js hiện nút này khi máy này đã đọc dở bộ truyện -#}
+    <a class="nut nut-vien" href="#" data-doc-tiep hidden>Đọc tiếp</a>
+  </p>
+
+  <aside class="hop hop-cach-doc" aria-labelledby="tieu-de-cach-doc">
+    <h2 class="tieu-de-hop" id="tieu-de-cach-doc">Cách đọc cùng con</h2>
+    <ul>
+      <li>Mỗi tối đọc một kỳ, khoảng {{ dsKy | phutMoiKy }} phút. Không cần đọc liền một mạch.</li>
+      <li>Cuối mỗi kỳ có vài câu hỏi để cha mẹ và con trò chuyện. Hỏi một hai câu là đủ.</li>
+      <li>Kỳ sau có tóm tắt ngắn kỳ trước, giúp cả nhà nhớ lại câu chuyện trước khi đọc tiếp.</li>
+    </ul>
+  </aside>
 
   <h2>Các kỳ</h2>
-  {%- if dsKy.length %}
-  <ol class="ds-ky">
+  <ol class="dong-ky">
     {%- for ky in dsKy %}
-    <li>
-      <a href="{{ ky.url }}"><span class="ds-ky-so">Kỳ {{ ky.data.ky }}</span> {{ ky.data.ten_ky or ky.data.title }}</a>
-      <span class="phu">{{ ky.data.soPhutDoc }} phút đọc</span>
+    <li class="dong-ky-muc" data-url="{{ ky.url }}">
+      <span class="dong-ky-so" aria-hidden="true">{{ ky.data.ky }}</span>
+      <div class="dong-ky-than">
+        <p class="dong-ky-nhan">Kỳ {{ ky.data.ky }} · {{ ky.data.soPhutDoc }} phút đọc{% if dangDang and loop.last %} · <span class="dong-ky-moi">Kỳ mới</span>{% endif %}<span class="dong-ky-da-doc" hidden> · Đã đọc</span></p>
+        <h3 class="dong-ky-ten"><a href="{{ ky.url }}">{{ ky.data.ten_ky or ky.data.title }}</a></h3>
+        {%- if ky.data.tom_tat_ky or ky.data.mo_ta %}<p class="dong-ky-tom-tat">{{ ky.data.tom_tat_ky or ky.data.mo_ta }}</p>{% endif %}
+      </div>
     </li>
     {%- endfor %}
+    {%- if dangDang %}
+    <li class="dong-ky-muc dong-ky-sap">
+      <span class="dong-ky-so" aria-hidden="true">…</span>
+      <div class="dong-ky-than"><p class="dong-ky-nhan">Kỳ tiếp theo đang được viết và sẽ đăng trong thời gian tới.</p></div>
+    </li>
+    {%- endif %}
   </ol>
-  {%- if bt.trang_thai != "hoan-thanh" %}<p class="phu">Các kỳ tiếp theo sẽ lần lượt được đăng.</p>{% endif %}
   {%- else %}
   <p class="trong">Kỳ đầu tiên sắp được đăng.</p>
   {%- endif %}

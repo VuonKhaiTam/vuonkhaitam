@@ -33,8 +33,16 @@ npx @11ty/eleventy
 | `trang-tu-dong/` | Trang sinh theo dữ liệu: trang chủ, danh sách, chủ đề, độ tuổi, mục lục bộ truyện… |
 | `assets/` | CSS, JavaScript, font tự lưu trữ, logo |
 | `scripts/kiem-tra-rieng-tu.mjs` | Chặn dựng web nếu có ảnh còn EXIF/GPS, file cấm, hoặc từ nhạy cảm |
+| `dang-bai/` | Trang Đăng bài (chép nguyên, không qua khuôn): khóa PIN, soạn bài, nén ảnh, đăng qua GitHub API. Hướng dẫn dùng: `HUONG-DAN-DANG-BAI.md` |
+| `dang-bai/vendor/` | Toast UI Editor 3.2.2 (bản `toastui-editor-all` do NHN phát hành, đã tắt gửi thống kê) và js-yaml 4.1.0 |
 
 Mỗi thư mục loại bài có file `<loai>.11tydata.js` quy định khuôn trang và đường dẫn. Bài có `an: true` không được xuất ra web.
+
+Trang sinh tự động khác: `/tim-kiem/chi-muc.json` (chỉ mục tìm kiếm, `trang-tu-dong/chi-muc.11ty.js`), `/sitemap.xml`, `/feed.xml`, `/robots.txt`. Ảnh chia sẻ 1200×630 được cắt tự động từ ảnh bìa vào `/og/`.
+
+## Truyện nhiều kỳ
+
+Mỗi kỳ là một file `noi-dung/truyen/<ma-bo-truyen>/ky-<n>.md` có `bo_truyen`, `ky`, `ten_ky` và (nên có) `tom_tat_ky`: 1–2 câu tóm tắt, hiện ở đầu kỳ sau. Thông tin bộ truyện nằm trong `_data/bo-truyen.json`. Trang Đăng bài tự tạo các file này. Trên trình duyệt người đọc, `chinh.js` ghi nhớ kỳ đã đọc trong `localStorage` (không gửi đi đâu) để hiện nút "Đọc tiếp".
 
 ## Thêm chủ đề mới
 

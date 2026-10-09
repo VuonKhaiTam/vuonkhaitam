@@ -2,11 +2,12 @@
 layout: layouts/co-so.njk
 lop_body: trang-truyen
 ---
-{#- Bài Truyện: hộp thông tin, lời ngỏ, nội dung, trò chuyện cùng con, hoạt động tiếp nối,
-    điều hướng kỳ trước / mục lục / kỳ sau (nếu thuộc bộ truyện), nút In -#}
-{%- set baiNay = collections.tatCaBai | timTheoUrl(page.url) -%}
+{#- Bài Truyện. Với truyện nhiều kỳ, người đọc luôn biết mình đang ở đâu:
+    thanh tiến độ (Kỳ 2 / 6) → tóm tắt kỳ trước → truyện → câu hỏi → thẻ "Đọc tiếp" kỳ sau → Kỳ trước / Mục lục / Kỳ sau.
+    Truyện 1 trang: hộp thông tin, lời ngỏ, truyện, câu hỏi, hoạt động tiếp nối. -#}
 {%- set boTruyenNay = dsBoTruyen[bo_truyen] if bo_truyen else null -%}
 {%- if boTruyenNay %}{% set kyKe = collections.boTruyen[bo_truyen] | kyKeBen(page.url) %}{% endif -%}
+{%- set laKyDau = (not boTruyenNay) or kyKe.thuTu <= 1 -%}
 {%- set dongThongTin = [
   { nhan: "Tuổi", gia_tri: do_tuoi | khoangTuoi },
   { nhan: "Thời gian đọc", gia_tri: soPhutDoc + " phút" },
@@ -14,14 +15,26 @@ lop_body: trang-truyen
 ] -%}
 <article class="bai khung-hep">
   {% include "partials/dau-bai.njk" %}
-  {%- if boTruyenNay %}{% include "partials/ky-truoc-sau.njk" %}{% endif %}
-  {% include "partials/hop-thong-tin.njk" %}
-  {%- if loi_ngo %}
-  <aside class="hop hop-loi-ngo" aria-labelledby="tieu-de-loi-ngo">
-    <h2 class="tieu-de-hop" id="tieu-de-loi-ngo">Lời ngỏ cho cha mẹ</h2>
-    <p>{{ loi_ngo }}</p>
+  {%- if boTruyenNay %}{% include "partials/tien-do-truyen.njk" %}{% endif %}
+
+  {#- Kỳ đầu (hoặc truyện 1 trang) mới cần hộp thông tin; các kỳ sau giống kỳ đầu nên bỏ cho gọn -#}
+  {%- if laKyDau %}{% include "partials/hop-thong-tin.njk" %}{% endif %}
+
+  {%- if boTruyenNay and kyKe.truoc %}
+  <aside class="ky-truoc-tom-tat" aria-label="Tóm tắt kỳ trước">
+    <p class="ky-truoc-nhan">Kỳ trước · <a href="{{ kyKe.truoc.url }}">Kỳ {{ kyKe.truoc.data.ky }}: {{ kyKe.truoc.data.ten_ky or kyKe.truoc.data.title }}</a></p>
+    <p>{{ kyKe.truoc.data.tom_tat_ky or kyKe.truoc.data.mo_ta }}</p>
   </aside>
   {%- endif %}
+
+  {%- if loi_ngo %}
+  {#- Lời ngỏ mở sẵn ở kỳ đầu; các kỳ sau thu gọn, cha mẹ bấm để xem -#}
+  <details class="hop hop-loi-ngo"{% if laKyDau %} open{% endif %}>
+    <summary class="tieu-de-hop">Lời ngỏ cho cha mẹ</summary>
+    <p>{{ loi_ngo }}</p>
+  </details>
+  {%- endif %}
+
   {% include "partials/anh-bia.njk" %}
   {% include "partials/video.njk" %}
   <div class="noi-dung noi-dung-truyen">
@@ -39,7 +52,10 @@ lop_body: trang-truyen
   {%- endif %}
   {%- endif %}
   <p class="luu-y-cha-me"><strong>Lưu ý cho cha mẹ:</strong> Không có câu trả lời sai. Đừng biến giờ đọc truyện thành giờ giảng đạo lý.</p>
-  {%- if boTruyenNay %}{% include "partials/ky-truoc-sau.njk" %}{% endif %}
+  {%- if boTruyenNay %}
+  {% include "partials/cuoi-ky.njk" %}
+  {% include "partials/ky-truoc-sau.njk" %}
+  {%- endif %}
   {%- set chuNutIn = "In truyện" %}
   {% include "partials/nut-in.njk" %}
   {% include "partials/chia-se.njk" %}

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://vuonkhaitam.com; connect-src https://api.github.com; frame-ancestors 'none'">
+<title>Đăng bài · Vườn Khai Tâm</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="vendor/toastui-editor-3.2.2/toastui-editor.min.css">
+<link rel="stylesheet" href="app.css">
+<script src="vendor/js-yaml-4.1.0/js-yaml.min.js" defer></script>
+<script src="vendor/toastui-editor-3.2.2/toastui-editor-all.min.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<header class="thanh-tren">
+  <a class="ten-trang" href="/" target="_blank" rel="noopener"><span class="vuon">Vườn</span> Khai Tâm <span class="phu-de">· Đăng bài</span></a>
+  <div class="thanh-tren-nut">
+    <button type="button" class="nut-nho" data-di="cai-dat" hidden>Cài đặt</button>
+    <button type="button" class="nut-nho" data-khoa-ngay hidden>Khóa ngay</button>
+  </div>
+</header>
+<p class="bao-chung" role="status" aria-live="polite" hidden></p>
+
+<main id="ung-dung">
+  <noscript><p class="the">Trang Đăng bài cần bật JavaScript.</p></noscript>
+
+  <!-- 1. Thiết lập lần đầu -->
+  <section class="man" data-man="thiet-lap" hidden>
+    <h1>Thiết lập trang Đăng bài</h1>
+    <p>Chỉ làm một lần trên mỗi máy (điện thoại hoặc máy tính). Mất khoảng 5 phút.</p>
+
+    <div class="the">
+      <h2>Bước 1. Tạo "chìa khóa" GitHub (token)</h2>
+      <p>Token là một mật khẩu riêng cho phép trang này cất bài vào kho mã của Vườn. Trang này sẽ khóa token lại bằng mã PIN của bạn.</p>
+      <ol class="cac-buoc">
+        <li>Mở <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">trang tạo token của GitHub</a> (đăng nhập bằng tài khoản GitHub của Vườn).</li>
+        <li><b>Token name:</b> gõ <code>dang-bai</code>. <b>Expiration:</b> chọn 1 năm (366 days) hoặc ngắn hơn.</li>
+        <li><b>Repository access:</b> chọn <i>Only select repositories</i>, rồi chọn kho <code>vuonkhaitam</code>.</li>
+        <li><b>Permissions › Repository permissions:</b> đặt <i>Contents</i> = <b>Read and write</b>, <i>Actions</i> = <b>Read-only</b>. <i>Metadata</i> tự có Read-only.</li>
+        <li>Bấm <b>Generate token</b>, rồi bấm nút sao chép token (chuỗi bắt đầu bằng <code>github_pat_</code>).</li>
+      </ol>
+      <label class="nhan-o" for="o-token">Dán token vào đây</label>
+      <input id="o-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+      <button type="button" class="nut" data-thu-ket-noi>Thử kết nối</button>
+      <p class="ket-qua-nho" data-ket-qua-token role="status"></p>
+    </div>
+
+    <div class="the">
+      <h2>Bước 2. Đặt mã PIN</h2>
+      <p>Ít nhất 6 chữ số. Mỗi lần mở trang Đăng bài chỉ cần nhập PIN. Nhập sai 5 lần liên tiếp, máy này sẽ xóa token để an toàn.</p>
+      <label class="nhan-o" for="o-pin-1">Mã PIN</label>
+      <input id="o-pin-1" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]*" minlength="6">
+      <label class="nhan-o" for="o-pin-2">Nhập lại mã PIN</label>
+      <input id="o-pin-2" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]*" minlength="6">
+    </div>
+
+    <div class="the">
+      <h2>Bước 3. Danh sách từ nhạy cảm</h2>
+      <p>Những từ không bao giờ được xuất hiện trên web. Trước khi đăng, trang này sẽ dò và chặn lại nếu bài có các từ này. Danh sách <b>chỉ lưu trên máy này</b>, không bao giờ gửi lên GitHub.</p>
+      <p class="goi-y">Ví dụ: tên con, tên ở nhà, tên trường, lớp, tên thầy cô, tên ấp, xã… Mỗi từ một dòng.</p>
+      <textarea id="o-tu-nhay-cam" rows="6" spellcheck="false"></textarea>
+    </div>
+
+    <button type="button" class="nut nut-lon" data-luu-thiet-lap>Lưu và bắt đầu</button>
+    <p class="ket-qua-nho" data-ket-qua-thiet-lap role="status"></p>
+  </section>
+
+  <!-- 2. Mở khóa bằng PIN -->
+  <section class="man man-giua" data-man="mo-khoa" hidden>
+    <h1>Nhập mã PIN</h1>
+    <div class="cham-pin" aria-hidden="true"></div>
+    <label class="an-chu" for="o-pin">Mã PIN</label>
+    <input id="o-pin" class="o-pin" type="password" inputmode="numeric" autocomplete="current-password" pattern="[0-9]*">
+    <div class="ban-phim" role="group" aria-label="Bàn phím số">
+      <button type="button" data-so="1">1</button><button type="button" data-so="2">2</button><button type="button" data-so="3">3</button>
+      <button type="button" data-so="4">4</button><button type="button" data-so="5">5</button><button type="button" data-so="6">6</button>
+      <button type="button" data-so="7">7</button><button type="button" data-so="8">8</button><button type="button" data-so="9">9</button>
+      <button type="button" data-so="xoa" aria-label="Xóa một số">⌫</button><button type="button" data-so="0">0</button><button type="button" data-so="mo" class="phim-mo">Mở</button>
+    </div>
+    <p class="ket-qua-nho" data-ket-qua-pin role="status"></p>
+    <button type="button" class="nut-chu" data-quen-pin>Quên PIN? Thiết lập lại bằng token</button>
+  </section>
+
+  <!-- 3. Bảng điều khiển -->
+  <section class="man" data-man="bang" hidden>
+    <p class="bao-token" data-bao-token hidden></p>
+    <h1>Viết bài mới</h1>
+    <div class="luoi-loai">
+      <button type="button" class="nut-loai" data-viet="goc-cha-me"><b>Góc cha mẹ</b><span>Bài phương pháp, có tóm tắt 3 ý</span></button>
+      <button type="button" class="nut-loai" data-viet="truyen"><b>Truyện</b><span>Truyện 1 trang hoặc một kỳ của bộ truyện</span></button>
+      <button type="button" class="nut-loai" data-viet="hoc-cung-con"><b>Học cùng con</b><span>Hoạt động 15–30 phút, có bản in</span></button>
+      <button type="button" class="nut-loai" data-viet="nhat-ky"><b>Nhật ký vườn ươm</b><span>Ghi chép đã thử, qua 6 lớp ẩn danh</span></button>
+    </div>
+
+    <h2>Bản nháp trên máy này</h2>
+    <p class="goi-y">Bản nháp tự lưu 10 giây một lần, chỉ nằm trên máy này, không bao giờ gửi lên GitHub.</p>
+    <ul class="ds" data-ds-nhap></ul>
+
+    <h2>Bài đã đăng</h2>
+    <div class="hang">
+      <input type="search" data-tim-bai placeholder="Tìm theo tên bài" aria-label="Tìm bài đã đăng">
+      <button type="button" class="nut nut-vien" data-tai-bai>Tải danh sách</button>
+    </div>
+    <ul class="ds" data-ds-bai></ul>
+  </section>
+
+  <!-- 4. Trình soạn -->
+  <section class="man" data-man="soan" hidden>
+    <div class="dau-soan">
+      <button type="button" class="nut-chu" data-ve-bang>← Về bảng điều khiển</button>
+      <p class="trang-thai-nhap" data-trang-thai-nhap role="status"></p>
+    </div>
+    <h1 data-tieu-de-soan>Viết bài</h1>
+    <form data-form-bai novalidate></form>
+    <div class="the the-noi-dung">
+      <h2>Nội dung bài</h2>
+      <p class="goi-y">Dán được nguyên văn từ Word. Đặt con trỏ vào chỗ muốn chèn, rồi bấm nút bên dưới. Ảnh tự được nén và xóa thông tin vị trí.</p>
+      <div class="hang hang-chen">
+        <button type="button" class="nut nut-vien" data-chen-anh>+ Chèn ảnh</button>
+        <button type="button" class="nut nut-vien" data-chen-video>+ Chèn video YouTube</button>
+      </div>
+      <div data-trinh-soan></div>
+    </div>
+    <div class="hang-nut-cuoi">
+      <button type="button" class="nut nut-vien" data-xem-truoc>Xem trước</button>
+      <button type="button" class="nut nut-lon" data-kiem-tra>Kiểm tra và đăng</button>
+    </div>
+  </section>
+
+  <!-- 5. Kiểm tra trước khi đăng -->
+  <section class="man" data-man="kiem-tra" hidden>
+    <button type="button" class="nut-chu" data-ve-soan>← Quay lại sửa bài</button>
+    <h1>Kiểm tra trước khi đăng</h1>
+    <div data-ket-qua-kiem-tra></div>
+    <button type="button" class="nut nut-lon" data-dang disabled>Đăng bài</button>
+  </section>
+
+  <!-- 6. Đang đăng -->
+  <section class="man" data-man="dang" hidden>
+    <h1 data-tieu-de-dang>Đang đăng bài…</h1>
+    <ol class="tien-trinh" data-tien-trinh></ol>
+    <div data-sau-dang></div>
+  </section>
+
+  <!-- 7. Cài đặt -->
+  <section class="man" data-man="cai-dat" hidden>
+    <button type="button" class="nut-chu" data-ve-bang>← Về bảng điều khiển</button>
+    <h1>Cài đặt</h1>
+    <div class="the">
+      <h2>Đổi mã PIN</h2>
+      <label class="nhan-o" for="o-pin-moi-1">PIN mới (ít nhất 6 số)</label>
+      <input id="o-pin-moi-1" type="password" inputmode="numeric" autocomplete="new-password">
+      <label class="nhan-o" for="o-pin-moi-2">Nhập lại PIN mới</label>
+      <input id="o-pin-moi-2" type="password" inputmode="numeric" autocomplete="new-password">
+      <button type="button" class="nut" data-doi-pin>Đổi PIN</button>
+    </div>
+    <div class="the">
+      <h2>Danh sách từ nhạy cảm</h2>
+      <p class="goi-y">Mỗi từ một dòng. Chỉ lưu trên máy này.</p>
+      <textarea id="o-tu-nhay-cam-2" rows="6" spellcheck="false"></textarea>
+      <button type="button" class="nut" data-luu-tu>Lưu danh sách</button>
+    </div>
+    <div class="the">
+      <h2>Chuyển bản nháp giữa các máy</h2>
+      <p class="goi-y">Xuất ra một file (có kèm ảnh), gửi file đó sang máy kia (qua email riêng hoặc Zalo "Cloud của tôi"), rồi bấm Nhập ở máy kia.</p>
+      <div class="hang">
+        <button type="button" class="nut nut-vien" data-xuat-nhap>Xuất bản nháp</button>
+        <label class="nut nut-vien">Nhập bản nháp<input type="file" accept="application/json,.json" data-nhap-nhap hidden></label>
+      </div>
+    </div>
+    <div class="the">
+      <h2>Token GitHub</h2>
+      <p data-han-token class="goi-y"></p>
+      <button type="button" class="nut nut-vien" data-thay-token>Thay token mới</button>
+    </div>
+  </section>
+</main>
+
+<!-- Hộp thoại dùng chung: chèn ảnh, chèn video, xác nhận -->
+<dialog class="hop-thoai" data-hop-thoai>
+  <form method="dialog" data-hop-thoai-form>
+    <h2 data-hop-thoai-tieu-de></h2>
+    <div data-hop-thoai-than></div>
+    <div class="hang-nut-cuoi">
+      <button type="submit" value="huy" class="nut nut-vien" formnovalidate>Hủy</button>
+      <button type="submit" value="dong-y" class="nut" data-hop-thoai-dong-y>Đồng ý</button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{#- Cuối mỗi kỳ: mời đọc tiếp kỳ sau, hoặc báo đã tới kỳ mới nhất / đã hết truyện.
+    Cần biến: boTruyenNay, bo_truyen, kyKe -#}
+<div class="cuoi-ky" data-cuoi-ky="{{ page.url }}">
+  {%- if kyKe.sau %}
+  <a class="doc-tiep" href="{{ kyKe.sau.url }}" rel="next">
+    <span class="doc-tiep-nhan">Đọc tiếp · Kỳ {{ kyKe.sau.data.ky }}</span>
+    <span class="doc-tiep-ten">{{ kyKe.sau.data.ten_ky or kyKe.sau.data.title }}</span>
+    <span class="doc-tiep-phu">{{ kyKe.sau.data.soPhutDoc }} phút đọc <span aria-hidden="true">→</span></span>
+  </a>
+  {%- elif boTruyenNay.trang_thai == "hoan-thanh" %}
+  <div class="het-ky">
+    <p class="het-ky-tieu-de">Hết truyện</p>
+    <p>Cảm ơn cha mẹ và con đã đọc trọn {{ kyKe.tong }} kỳ của <em>{{ boTruyenNay.ten }}</em>. Tối nay, cả nhà thử kể lại cho nhau nghe đoạn mình nhớ nhất nhé.</p>
+    <p><a href="/truyen/{{ bo_truyen }}/">Xem lại mục lục</a> · <a href="/truyen/">Tìm truyện khác</a></p>
+  </div>
+  {%- else %}
+  <div class="het-ky">
+    <p class="het-ky-tieu-de">Anh chị đã đọc tới kỳ mới nhất</p>
+    <p>Kỳ tiếp theo sẽ được đăng trong thời gian tới. Lần sau ghé Vườn, anh chị mở mục lục bộ truyện là thấy ngay kỳ mới.</p>
+    <p><a href="/truyen/{{ bo_truyen }}/">Mục lục bộ truyện</a>{% if site.lien_he.facebook %} · <a href="{{ site.lien_he.facebook }}" rel="noopener">Theo dõi trang Facebook để nhận tin kỳ mới</a>{% endif %}</p>
+  </div>
+  {%- endif %}
+</div>

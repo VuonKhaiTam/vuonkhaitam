@@ -4,6 +4,8 @@
 {%- set tieuDeTrang = (site.ten + " · " + site.khau_hieu) if laTrangChu else (title + " | " + site.ten) -%}
 {%- set moTaTrang = mo_ta or site.mo_ta -%}
 {%- set anhChiaSe = anh_chia_se or "/assets/logo/og-mac-dinh.jpg" -%}
+{#- Bài có ảnh bìa: tự cắt thành ảnh chia sẻ 1200×630 -#}
+{%- if laBai and anh_bia %}{% set anhChiaSe = anh_bia | anhChiaSe(loai + "-" + duong_dan) %}{% endif -%}
 <!doctype html>
 <html lang="vi">
 <head>
@@ -23,6 +25,7 @@
 <link rel="preload" href="/assets/fonts/lora-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/lora-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/chinh.css?v={{ phienBan }}">
+<link rel="stylesheet" href="/assets/css/in.css?v={{ phienBan }}" media="print">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/logo/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
@@ -44,6 +47,45 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="{{ site.ten }}" href="/feed.xml">
 <script src="/assets/js/chinh.js?v={{ phienBan }}" defer></script>
+{%- if page.url == "/tim-kiem/" %}
+<script src="/assets/js/tim-kiem.js?v={{ phienBan }}" defer></script>
+{%- endif %}
+{#- Dữ liệu có cấu trúc (JSON-LD) giúp Google hiểu trang -#}
+{%- if laTrangChu %}
+{%- set ldWeb = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": site.ten,
+  "url": site.url,
+  "inLanguage": "vi",
+  "potentialAction": { "@type": "SearchAction", "target": site.url + "/tim-kiem/?q={search_term_string}", "query-input": "required name=search_term_string" }
+} %}
+<script type="application/ld+json">{{ ldWeb | jsonLd | safe }}</script>
+{%- endif %}
+{%- if laBai %}
+{%- set lb = loai | loaiBai -%}
+{%- set dsViTri = [
+  { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": site.url + "/" },
+  { "@type": "ListItem", "position": 2, "name": lb.ten, "item": (lb.duong_dan | tuyetDoi) }
+] -%}
+{%- if bo_truyen and dsBoTruyen[bo_truyen] %}{% set dsViTri = dsViTri.concat([{ "@type": "ListItem", "position": 3, "name": dsBoTruyen[bo_truyen].ten, "item": ("/truyen/" + bo_truyen + "/") | tuyetDoi }]) %}{% endif -%}
+{%- set dsViTri = dsViTri.concat([{ "@type": "ListItem", "position": dsViTri.length + 1, "name": title, "item": (page.url | tuyetDoi) }]) -%}
+{%- set ldBai = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": moTaTrang,
+  "image": [(anhChiaSe | tuyetDoi)],
+  "datePublished": (page.date | ngayIso),
+  "dateModified": ((cap_nhat or page.date) | ngayIso),
+  "inLanguage": "vi",
+  "mainEntityOfPage": (page.url | tuyetDoi),
+  "author": { "@type": "Person", "name": site.tac_gia, "url": ("/gioi-thieu/" | tuyetDoi) },
+  "publisher": { "@type": "Organization", "name": site.ten, "logo": { "@type": "ImageObject", "url": ("/assets/logo/logo-hinh-192.webp" | tuyetDoi) } }
+} -%}
+<script type="application/ld+json">{{ ldBai | jsonLd | safe }}</script>
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": dsViTri } | jsonLd | safe }}</script>
+{%- endif %}
 </head>
 <body class="{{ lop_body }}">
 <a class="bo-qua" href="#noi-dung">Bỏ qua, tới nội dung</a>

@@ -1,0 +1,44 @@
+/* =========================================================
+   Vườn Khai Tâm · in.css (chỉ dùng khi in hoặc Lưu PDF)
+   Bản A4 gọn: không menu, không nút, chữ đen trên nền trắng,
+   câu hỏi có dòng kẻ để con viết câu trả lời.
+   ========================================================= */
+@page{size:A4;margin:16mm 15mm 18mm}
+
+body{background:#fff!important;color:#000;font-size:12pt;line-height:1.55;padding:0!important}
+a{color:#000;text-decoration:none}
+
+/* Ẩn mọi thứ không cần trên giấy */
+.bo-qua,.dau-trang,.thanh-day,.chan-trang,.vi-tri,.chia-se,.khu-nut-in,.lien-quan,.ky-truoc-sau,
+.tien-do-truyen,.cuoi-ky,.bo-loc,.video,.bai-mau,.the-tiep-noi,.dong-ky-da-doc,.luu-y-cha-me{display:none!important}
+
+.khung,.khung-hep{max-width:none;padding:0}
+.bai{padding-top:0}
+h1,h2,h3{color:#000;page-break-after:avoid;break-after:avoid}
+h1{font-size:22pt;margin:0 0 4pt}
+.noi-dung h2{font-size:15pt}
+.noi-dung h3{font-size:13pt}
+.cac-nhan{margin-bottom:4pt}
+.nhan,.nhan-tuoi{border:1px solid #777;background:none!important;color:#000!important;padding:1px 6px}
+.dong-thong-tin{color:#333;margin-bottom:10pt}
+.noi-dung-truyen{font-size:13pt;line-height:1.7}
+p,li{orphans:3;widows:3}
+
+/* Ảnh không quá to, không bị cắt ngang trang */
+img{max-height:95mm;width:auto!important;margin:6pt auto;page-break-inside:avoid;break-inside:avoid}
+.anh-bia img{max-height:70mm;border-radius:0}
+
+/* Các hộp: viền mảnh thay cho nền màu (máy in không in nền) */
+.hop,.ky-truoc-tom-tat{background:none!important;border:1px solid #999!important;border-radius:4pt;page-break-inside:avoid;break-inside:avoid}
+.hop-cau-hoi{border:1.5px dashed #666!important;margin-top:14pt}
+.tieu-de-hop,.tang-cau-hoi{color:#000}
+
+/* Dòng kẻ để con viết câu trả lời */
+.dong-ke{display:block;height:9mm;border-bottom:1px solid #999}
+.hop-cau-hoi li{margin-bottom:6pt}
+
+/* Lời ngỏ thu gọn vẫn được in (chinh.js mở sẵn trước khi in) */
+details.hop-loi-ngo summary::after{content:none}
+
+/* Dòng ghi nguồn ở cuối trang in */
+.nguon-in{display:block!important;margin-top:16pt;padding-top:6pt;border-top:1px solid #999;font-size:9.5pt;color:#333}

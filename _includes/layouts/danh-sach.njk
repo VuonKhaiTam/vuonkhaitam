@@ -14,21 +14,21 @@ layout: layouts/co-so.njk
     <p class="mo-ta-lon">{{ loaiHienTai.mo_ta }}</p>
   </header>
 
-  {%- if loaiHienTai.ma == "truyen" and collections.boTruyen | length %}
-  <section class="khu" aria-labelledby="tieu-de-bo-truyen">
-    <h2 id="tieu-de-bo-truyen">Truyện nhiều kỳ</h2>
-    <ul class="ds-bo-truyen">
-      {%- for ma, dsKy in collections.boTruyen %}{% set bt = dsBoTruyen[ma] %}{% if bt %}
-      <li><a href="/truyen/{{ ma }}/">{{ bt.ten }}</a> <span class="phu">{{ dsKy.length }} kỳ · {{ "Hoàn thành" if bt.trang_thai == "hoan-thanh" else "Đang đăng" }}</span></li>
-      {%- endif %}{% endfor %}
-    </ul>
-  </section>
-  {%- endif %}
+  {#- Trang Truyện: mỗi bộ truyện nhiều kỳ là MỘT thẻ (bấm vào ra mục lục), không rải từng kỳ ra lưới.
+      Truyện 1 trang vẫn hiện như thẻ bài bình thường. Cả hai nằm chung lưới nên lọc được cùng lúc. -#}
+  {%- set laTrangTruyen = loaiHienTai.ma == "truyen" -%}
+  {%- if laTrangTruyen %}{% set dsBai = dsBai | truyenMotTrang %}{% endif -%}
+  {%- set coBoTruyen = laTrangTruyen and (collections.boTruyen | length) -%}
 
-  {%- if dsBai.length %}
+  {%- if dsBai.length or coBoTruyen %}
   {% include "partials/bo-loc.njk" %}
   <div class="luoi-the" data-luoi-loc>
     {%- set capThe = "h2" %}
+    {%- if coBoTruyen %}
+    {%- for ma, dsKy in collections.boTruyen %}{% set bt = dsBoTruyen[ma] %}{% if bt %}
+    {% include "partials/the-bo-truyen.njk" %}
+    {%- endif %}{% endfor %}
+    {%- endif %}
     {%- for bai in dsBai %}
     {% include "partials/the-bai.njk" %}
     {%- endfor %}

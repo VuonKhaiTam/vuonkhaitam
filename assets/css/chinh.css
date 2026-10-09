@@ -135,10 +135,25 @@ strong,b{font-weight:600}
 .chao-logo{width:104px;height:auto;margin-bottom:4px}
 .chao-khau-hieu{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--nau-dat-dam);font-weight:600;margin:8px 0 0}
 .chao h1{font-size:clamp(27px,7.4vw,40px);font-weight:700;line-height:1.22;margin:.2em 0 .4em}
-/* Điểm nhấn duy nhất của trang: chữ "hạt giống" có vệt nắng bên dưới */
-.nhan-manh{color:var(--xanh-rung-tuoi);padding:0 2px;
-  background:linear-gradient(transparent 62%,rgba(222,185,82,.55) 62%,rgba(222,185,82,.55) 92%,transparent 92%)}
+/* Chữ "hạt giống" trong lời chào: chỉ đổi màu xanh rừng tươi, không gạch chân (tác giả bỏ ngày 09/10/2026) */
+.nhan-manh{color:var(--xanh-rung-tuoi)}
 .chao .mo-ta-lon{margin-left:auto;margin-right:auto}
+
+/* ---------- Ba chữ của Khai Tâm: Gieo hạt · Khai mở · Phát triển ---------- */
+.ba-chu{margin-top:36px}
+.ba-chu-mo{max-width:62ch;margin:0 0 20px}
+.ba-chu-ds{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:ba-chu}
+.ba-chu-muc{display:grid;grid-template-columns:52px 1fr;gap:10px 14px;align-items:center;align-content:start;background:var(--giay-trang);
+  border-radius:14px;padding:16px;box-shadow:0 1px 0 var(--vien),0 6px 18px rgba(26,61,43,.06)}
+.ba-chu-hinh{width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.ba-chu-muc:nth-child(1) .ba-chu-hinh{background:var(--nhan-truyen-nen);color:var(--nau-dat-dam)}
+.ba-chu-muc:nth-child(2) .ba-chu-hinh{background:var(--ma-non);color:var(--xanh-rung-tuoi)}
+.ba-chu-muc:nth-child(3) .ba-chu-hinh{background:var(--nhan-hoc-nen);color:var(--rung-sau)}
+.ba-chu-ten{font-size:21px;margin:0}
+.ba-chu-muc:nth-child(1) .ba-chu-ten{color:var(--nau-dat-dam)}
+.ba-chu-muc:nth-child(2) .ba-chu-ten{color:var(--xanh-rung-tuoi)}
+.ba-chu-muc p{grid-column:1/-1;margin:0;font-size:16px;line-height:1.65}
+.ba-chu-cuoi{margin:18px 0 0;display:flex;flex-wrap:wrap;gap:10px}
 .chon-tuoi-hoi{font-size:20px;margin:1em 0 .5em}
 .chon-tuoi{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:520px}
 /* Nút tuổi: viền trên đậm dần từ lá non tới rừng sâu, gợi ý con "lớn dần" */
@@ -204,9 +219,6 @@ strong,b{font-weight:600}
 .nut-loc{flex:none;min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--vien);background:var(--giay-trang);color:var(--muc);font:400 15px/1.2 var(--font-than);cursor:pointer}
 .nut-loc[aria-pressed="true"]{background:var(--la-truong-thanh);border-color:var(--la-truong-thanh);color:#fff;font-weight:600}
 .ket-qua-loc{font-size:14px;color:var(--muc-nhat);margin:4px 0 0}
-.ds-bo-truyen{padding-left:20px}
-.ds-bo-truyen li{margin-bottom:8px}
-.ds-bo-truyen a{font-weight:600}
 .luoi-o{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 .o-muc{background:var(--giay-trang);border:1px solid var(--vien);border-radius:14px;padding:16px}
 .o-muc-ten{margin:0 0 6px;font-size:21px}
@@ -219,7 +231,6 @@ strong,b{font-weight:600}
 .vi-tri li+li::before{content:"›";margin:0 8px;color:var(--muc-nhat)}
 .vi-tri a{color:var(--muc-nhat);display:inline-block;padding:10px 0}
 .bai-mau{background:var(--nhan-nhatky-nen);color:var(--nhan-nhatky-chu);border-radius:10px;padding:10px 14px;font-size:15px}
-.ky-dau-de{font-size:15px;color:var(--muc-nhat);margin:4px 0 0}
 .bai-tieu-de{margin:.2em 0 .3em}
 .dong-thong-tin{font-size:14px;color:var(--muc-nhat);margin:0 0 20px}
 .dong-thong-tin a{color:var(--muc-nhat)}
@@ -262,6 +273,66 @@ strong,b{font-weight:600}
 .truyen-lien-quan{font-size:16px}
 .nguon-in{display:none}
 
+/* ---------- Truyện nhiều kỳ: giúp người đọc luôn biết mình đang ở đâu ---------- */
+/* Thanh tiến độ đầu mỗi kỳ */
+.tien-do-truyen{background:var(--giay-trang);border-radius:14px;padding:12px 14px;margin:0 0 20px;box-shadow:0 1px 0 var(--vien),0 4px 14px rgba(26,61,43,.06)}
+.tdt-dau{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;margin:0 0 8px}
+.tdt-bo{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;font-size:15px;color:var(--go);text-decoration:none}
+.tdt-bo:hover{color:var(--rung-sau);text-decoration:underline}
+.tdt-vi-tri{font-family:var(--font-tieu-de);font-weight:700;font-size:18px;color:var(--xanh-rung-tuoi);white-space:nowrap}
+.tdt-tong{color:var(--muc-nhat);font-weight:600}
+.tdt-o{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.tdt-o a,.tdt-sap span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;font-weight:600;font-size:15px;text-decoration:none;
+  background:#fff;border:1.5px solid var(--vien);color:var(--muc)}
+.tdt-o a:hover{border-color:var(--la-truong-thanh)}
+.tdt-o a.da-doc{background:var(--ma-non);border-color:var(--ma-non);color:var(--xanh-rung-tuoi)}
+.tdt-o a[aria-current]{background:var(--xanh-rung-tuoi);border-color:var(--xanh-rung-tuoi);color:#fff}
+.tdt-sap span{border-style:dashed;color:var(--muc-nhat);background:transparent}
+/* Tóm tắt kỳ trước */
+.ky-truoc-tom-tat{background:var(--nen-cau-hoi);border-left:4px solid var(--nang-mai);border-radius:0 var(--bo-goc) var(--bo-goc) 0;padding:12px 16px;margin:0 0 20px;font-size:16px}
+.ky-truoc-tom-tat p{margin:0}
+.ky-truoc-nhan{font-size:13px;font-weight:600;color:var(--go);margin-bottom:4px!important}
+.ky-truoc-nhan a{color:var(--go)}
+/* Lời ngỏ thu gọn được */
+details.hop-loi-ngo summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px;margin:0}
+details.hop-loi-ngo summary::-webkit-details-marker{display:none}
+details.hop-loi-ngo summary::after{content:"+";font:600 22px/1 var(--font-than);color:var(--la-truong-thanh)}
+details.hop-loi-ngo[open] summary::after{content:"−"}
+details.hop-loi-ngo[open] summary{margin-bottom:6px}
+/* Cuối kỳ: đọc tiếp */
+.cuoi-ky{margin:28px 0 16px}
+.doc-tiep{display:flex;flex-direction:column;gap:2px;padding:18px 20px;border-radius:14px;background:var(--rung-sau);color:#fff;text-decoration:none;box-shadow:0 6px 18px rgba(26,61,43,.18)}
+.doc-tiep:hover{background:#163423;color:#fff}
+.doc-tiep:focus-visible{outline-color:var(--nang-mai)}
+.doc-tiep-nhan{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--nang-mai)}
+.doc-tiep-ten{font-family:var(--font-tieu-de);font-weight:700;font-size:22px;line-height:1.3}
+.doc-tiep-phu{font-size:15px;color:var(--ma-non)}
+.het-ky{background:var(--suong-som);border-radius:14px;padding:16px 18px}
+.het-ky p{margin:0 0 8px}
+.het-ky p:last-child{margin:0}
+.het-ky-tieu-de{font-family:var(--font-tieu-de);font-weight:700;font-size:20px;color:var(--rung-sau)}
+/* Mục lục bộ truyện */
+.bt-so-lieu{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--muc-nhat);margin:0 0 16px}
+.bt-so-lieu strong{color:var(--rung-sau)}
+.bt-nut{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px}
+.hop-cach-doc{background:var(--suong-som)}
+.dong-ky{list-style:none;padding:0;margin:0 0 16px;position:relative}
+.dong-ky::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;border-left:2px dotted var(--vien)}
+.dong-ky-muc{position:relative;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:0 0 18px}
+.dong-ky-so{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#fff;border:1.5px solid var(--la-truong-thanh);
+  font-weight:600;color:var(--xanh-rung-tuoi);position:relative}
+.dong-ky-muc.da-doc .dong-ky-so{background:var(--ma-non);border-color:var(--ma-non)}
+.dong-ky-sap .dong-ky-so{border-style:dashed;border-color:var(--vien);color:var(--muc-nhat)}
+.dong-ky-than{padding-top:2px}
+.dong-ky-nhan{font-size:13px;color:var(--muc-nhat);margin:0}
+.dong-ky-moi{color:var(--nhan-nhatky-chu);font-weight:600}
+.dong-ky-ten{font-size:19px;margin:2px 0 4px}
+.dong-ky-ten a{color:var(--rung-sau);text-decoration:none}
+.dong-ky-ten a:hover{text-decoration:underline}
+.dong-ky-tom-tat{font-size:15px;line-height:1.55;color:var(--muc-nhat);margin:0}
+/* Thẻ bộ truyện trên trang Truyện: viền xếp lớp như một chồng sách nhiều kỳ */
+.the-bo-truyen{box-shadow:0 1px 0 var(--vien),5px 5px 0 -1px var(--giay-trang),5px 5px 0 0 var(--vien),0 6px 18px rgba(26,61,43,.07);margin:0 6px 6px 0}
+
 /* ---------- Kỳ trước / sau ---------- */
 .ky-truoc-sau{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:0 0 20px}
 .ky-truoc-sau a{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:6px 12px;border-radius:10px;
@@ -269,10 +340,6 @@ strong,b{font-weight:600}
 .ky-truoc{justify-self:start}
 .ky-sau{justify-self:end}
 .ky-muc-luc{justify-self:center}
-.ds-ky{padding-left:0;list-style:none;margin:0 0 16px}
-.ds-ky li{border-bottom:1px solid var(--vien);padding:8px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;align-items:center}
-.ds-ky a{display:inline-flex;gap:8px;min-height:44px;align-items:center;font-weight:600;text-decoration:none}
-.ds-ky-so{color:var(--go)}
 
 /* ---------- Chia sẻ, In ---------- */
 .chia-se{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:24px 0}
@@ -305,6 +372,15 @@ strong,b{font-weight:600}
 .o-tim-hang{display:flex;gap:8px}
 .o-tim input{flex:1;min-width:0;min-height:48px;padding:8px 14px;border:1.5px solid var(--vien);border-radius:10px;background:var(--giay-trang);font:400 17px/1.4 var(--font-than);color:var(--muc)}
 .o-tim input:focus{border-color:var(--la-truong-thanh);outline:none;box-shadow:0 0 0 3px var(--ma-non)}
+.tim-so{font-size:14px;color:var(--muc-nhat);margin:0 0 8px}
+.tim-trong{background:var(--giay-trang);border:1px dashed var(--vien);border-radius:var(--bo-goc);padding:16px;color:var(--muc-nhat)}
+.ds-ket-qua{list-style:none;padding:0;margin:0 0 28px}
+.ds-ket-qua li{background:var(--giay-trang);border-radius:12px;padding:12px 14px;margin:0 0 10px;box-shadow:0 1px 0 var(--vien)}
+.kq-loai{font-size:13px;font-weight:600;color:var(--go);margin:0}
+.kq-ten{display:inline-block;font-family:var(--font-tieu-de);font-weight:600;font-size:19px;line-height:1.35;color:var(--rung-sau);text-decoration:none;padding:2px 0}
+.kq-ten:hover{text-decoration:underline}
+.kq-mo-ta{font-size:15px;line-height:1.55;color:var(--muc-nhat);margin:4px 0 0}
+.ket-qua-tim mark{background:var(--nhan-nhatky-nen);color:inherit;padding:0 1px;border-radius:3px}
 .thu-font-to{font-size:40px}
 
 /* ---------- Màn hình rộng ---------- */
@@ -337,6 +413,8 @@ strong,b{font-weight:600}
   .chao-trong{flex-direction:row;text-align:left;gap:40px;align-items:center}
   .chao-logo{width:170px;flex:none}
   .chon-tuoi{max-width:640px}
+  .ba-chu-ds{grid-template-columns:repeat(3,1fr);gap:18px}
+  .ba-chu-muc{padding:20px}
   .chao .mo-ta-lon{margin-left:0}
   .hai-cot{grid-template-columns:1fr 1fr}
   .noi-dung-truyen{font-size:19px}

@@ -17,9 +17,6 @@
   {%- if do_tuoi and do_tuoi.length %}<span class="nhan-tuoi">{{ do_tuoi | khoangTuoi }}</span>{% endif %}
   {%- if nhanThem %}<span class="nhan {{ nhanThem.lop }}">{{ nhanThem.ten }}</span>{% endif %}
 </p>
-{%- if boTruyenNay %}
-<p class="ky-dau-de">Bộ truyện: <a href="/truyen/{{ bo_truyen }}/">{{ boTruyenNay.ten }}</a></p>
-{%- endif %}
 <h1 class="bai-tieu-de">{{ title }}</h1>
 <p class="dong-thong-tin">
   <a href="/gioi-thieu/">{{ site.tac_gia }}</a> ·

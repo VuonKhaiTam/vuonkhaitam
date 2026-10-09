@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{#- Sơ đồ web cho Google: mọi trang công khai. Bỏ trang 404, trang thử font, bài ẩn (bài ẩn vốn không được xuất ra). -#}
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for trang in collections.all %}
+{%- if trang.url and trang.url.endsWith("/") and not trang.data.khong_lap_chi_muc and trang.url != "/404/" and not trang.data.an %}
+  <url>
+    <loc>{{ trang.url | tuyetDoi }}</loc>
+    <lastmod>{{ (trang.data.cap_nhat or trang.date) | ngayIso }}</lastmod>
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

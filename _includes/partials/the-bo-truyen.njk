@@ -1,0 +1,19 @@
+{#- Thẻ một bộ truyện nhiều kỳ, cùng kiểu với thẻ bài để nằm chung lưới và lọc được.
+    Cần biến: ma (mã bộ truyện), bt (dữ liệu bộ truyện), dsKy; tùy chọn: capThe -#}
+{%- set theTieuDe = capThe or "h3" -%}
+<article class="the-bai the-bo-truyen" data-loai="truyen" data-tuoi="{{ (bt.do_tuoi or []) | join(' ') }}" data-chu-de="{{ (bt.chu_de or []) | join(' ') }}">
+  {%- if bt.anh_bia %}
+  <img class="the-bai-anh" src="{{ bt.anh_bia }}" alt="Ảnh bìa bộ truyện {{ bt.ten }}" sizes="(min-width: 960px) 330px, (min-width: 600px) 45vw, 100vw">
+  {%- else %}
+  <div class="the-bai-anh anh-tam" aria-hidden="true"></div>
+  {%- endif %}
+  <div class="the-bai-than">
+    <p class="cac-nhan">
+      <span class="nhan nhan-truyen">Truyện nhiều kỳ</span>
+      {%- if bt.do_tuoi %}<span class="nhan-tuoi">{{ bt.do_tuoi | khoangTuoi }}</span>{% endif %}
+    </p>
+    <{{ theTieuDe }} class="the-bai-tieu-de"><a href="/truyen/{{ ma }}/">{{ bt.ten }}</a></{{ theTieuDe }}>
+    {%- if bt.mo_ta %}<p class="the-bai-mo-ta">{{ bt.mo_ta }}</p>{% endif %}
+    <p class="the-bai-thong-tin">{{ dsKy.length }} kỳ · {{ "Hoàn thành" if bt.trang_thai == "hoan-thanh" else "Đang đăng" }} · khoảng {{ dsKy | phutMoiKy }} phút mỗi kỳ</p>
+  </div>
+</article>

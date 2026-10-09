@@ -1,0 +1,27 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+{#- Nguồn tin (Atom): 20 bài mới nhất, để ai dùng trình đọc tin có thể theo dõi Vườn -#}
+{%- set dsMoi = (collections.tatCaBai or []) | dau(20) -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="vi">
+  <title>{{ site.ten | escape }}</title>
+  <subtitle>{{ site.mo_ta | escape }}</subtitle>
+  <link href="{{ '/feed.xml' | tuyetDoi }}" rel="self"/>
+  <link href="{{ '/' | tuyetDoi }}"/>
+  <id>{{ '/' | tuyetDoi }}</id>
+  <updated>{{ (dsMoi[0].date if dsMoi.length else "2026-10-08") | ngayIso }}T00:00:00Z</updated>
+  <author><name>{{ site.tac_gia | escape }}</name></author>
+  {%- for bai in dsMoi %}
+  <entry>
+    <title>{{ bai.data.title | escape }}</title>
+    <link href="{{ bai.url | tuyetDoi }}"/>
+    <id>{{ bai.url | tuyetDoi }}</id>
+    <published>{{ bai.date | ngayIso }}T00:00:00Z</published>
+    <updated>{{ (bai.data.cap_nhat or bai.date) | ngayIso }}T00:00:00Z</updated>
+    <summary>{{ bai.data.mo_ta | escape }}</summary>
+    <content type="html">{{ bai.content | htmlToAbsoluteUrls(bai.url | tuyetDoi) | escape }}</content>
+  </entry>
+  {%- endfor %}
+</feed>
