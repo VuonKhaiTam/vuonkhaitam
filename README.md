@@ -45,4 +45,4 @@ Thêm một dòng `{ "ma", "ten", "mo_ta" }` vào `_data/chu-de.json` (`ma` khô
 - Không bao giờ đưa lên kho: bản thảo `.docx`, bản nháp, token, danh sách từ nhạy cảm.
 - Danh sách từ nhạy cảm chỉ nằm trong GitHub Secret `TU_NHAY_CAM` và trong trình duyệt của tác giả.
 
-© Mộc Yên — Khai Tâm. Font Be Vietnam Pro và Cormorant Garamond dùng giấy phép SIL Open Font License (xem `assets/fonts/`).
+© Mộc Yên — Khai Tâm. Font Be Vietnam Pro và Lora dùng giấy phép SIL Open Font License (xem `assets/fonts/`).
