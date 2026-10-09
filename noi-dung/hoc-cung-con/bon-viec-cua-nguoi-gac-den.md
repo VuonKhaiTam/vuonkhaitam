@@ -31,7 +31,7 @@ Trong truyện *Lồng Đèn Gọi Tên*, bà dạy Mây bốn việc của ngư
 
 ## Các bước
 
-1. **Kể lại một vị khách.** Cha mẹ kể trước một lần mình gặp "khách" gần đây. *Cha mẹ có thể nói: "Hôm qua ông Bực ghé ba, gõ vào cửa hàm, ba nghiến răng lúc nào không biết."*
+1. **Kể lại một vị khách.** Cha mẹ kể trước một lần mình gặp "khách" gần đây. *Cha mẹ có thể nói: "Hôm qua ông Bực ghé mình, gõ vào cửa hàm, mình nghiến răng lúc nào không hay."*
 2. **Dừng lại.** Con nhắm mắt, nhớ lại một lúc khó chịu trong tuần, và chỉ tay vào chỗ "khách gõ cửa": ngực, bụng, cổ họng hay mặt.
 3. **Thắp đèn.** Con cầm đèn pin, rọi lên chỗ ấy trên cơ thể mình (hoặc trên hình người vẽ trên giấy). *Cha mẹ có thể nói: "Mình không đuổi khách, mình chỉ nhìn cho rõ thôi."*
 4. **Gọi tên.** Cùng tìm tên chính xác nhất ở phần "Vài dòng họ khách quen" bên dưới, rồi viết lên Bức Tường Tên.

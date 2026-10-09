@@ -1,21 +1,44 @@
 ---
 title: Giới thiệu
 permalink: /gioi-thieu/
-mo_ta: "Vườn Khai Tâm là ghi chép của một người cha tìm hiểu khoa học về trẻ em, viết dưới bút danh Mộc Yên, cùng cam kết bảo vệ quyền riêng tư của trẻ."
-mo_dau: "Về Khai Tâm và Mộc Yên: vì sao có khu vườn này."
+mo_ta: "Vườn Khai Tâm là nơi Mộc Yên ghi lại truyện, hoạt động và những điều đã thử khi đồng hành cùng con 6–18 tuổi, cùng cam kết bảo vệ quyền riêng tư của trẻ."
+mo_dau: "Về Vườn Khai Tâm và bút danh Mộc Yên."
 ---
 
-> **Bản tạm.** Mộc Yên sẽ viết lại phần giới thiệu này trước khi web ra mắt. Phần "Cam kết riêng tư" bên dưới là bản đầy đủ.
+## Vườn Khai Tâm là gì?
 
-## Khu vườn này là gì?
+Vườn Khai Tâm là một góc nhỏ trên mạng dành cho cha mẹ có con từ 6 đến 18 tuổi. Ở đây có truyện để đọc cùng con, những bài ngắn về cách đồng hành với con, các hoạt động nhỏ làm được ngay trong nhà, và nhật ký về những điều một gia đình đã thử, cả chuyện thành lẫn chuyện chưa thành.
 
-Vườn Khai Tâm là ghi chép của một người cha đang tìm hiểu khoa học về trẻ em và học cách đồng hành cùng con từ 6 đến 18 tuổi. Ở đây có truyện để đọc cùng con, những bài phương pháp ngắn gọn cho cha mẹ, các hoạt động nhỏ làm cùng con, và nhật ký về những điều đã thử.
+Mọi điều ở Khai Tâm xoay quanh ba chữ: **gieo hạt**, **khai mở** và **phát triển**. Cha mẹ gieo những hạt giống đầu tiên bằng tình thương và những câu chuyện. Con được khai mở theo cách của riêng con. Còn phát triển là chuyện của thời gian, của cả một mùa chăm bón.
 
-Tác giả không phải nhà tâm lý hay chuyên gia giáo dục có chứng chỉ. Những gì viết ở đây là điều tác giả đã đọc, đã thử, kèm nguồn tham khảo để anh chị tự tìm hiểu thêm. Nếu con gặp khó khăn kéo dài về cảm xúc, sức khỏe hay học tập, anh chị hãy tìm tới bác sĩ hoặc chuyên gia.
+## Ai viết những trang này?
 
-## Vì sao là "Mộc Yên"?
+Người viết những trang này ký tên Mộc Yên. Mộc Yên không phải nhà tâm lý hay chuyên gia giáo dục có chứng chỉ. Những gì viết ở đây là điều Mộc Yên đã đọc, đã thử với chính gia đình mình, kèm nguồn tham khảo để anh chị tự tìm hiểu thêm.
 
-Mộc Yên là bút danh. Tác giả chọn viết ẩn danh để bảo vệ con mình và những đứa trẻ xuất hiện trong các trang nhật ký.
+Vì vậy, xin anh chị đọc Vườn Khai Tâm như đọc ghi chép của một người bạn cùng đường, không phải lời khuyên chuyên môn. Nếu con gặp khó khăn kéo dài về cảm xúc, sức khỏe hay học tập, anh chị hãy tìm đến bác sĩ hoặc chuyên gia.
+
+## Bút danh Mộc Yên
+
+**Mộc Yên: mộc mạc và bình yên.**
+
+Mộc là cây, là sự sống tự nhiên, chẳng cần tô vẽ vẫn mang vẻ đẹp riêng. Yên là bình yên, là khoảng lặng để con người lắng nghe chính mình và thấu hiểu những người mình thương yêu.
+
+Mộc Yên là bút danh tôi chọn cho mình, cũng là cách tôi muốn hiện diện giữa cuộc đời: giản dị, chân thành, chậm rãi quan sát và học cách lớn lên từ những điều bình thường.
+
+Viết dưới bút danh còn là để bảo vệ con tôi và những đứa trẻ xuất hiện trong các trang nhật ký. Một đứa trẻ có quyền lớn lên mà không bị người lạ biết tên, biết trường, biết những chuyện riêng của mình. Vườn Khai Tâm giữ quyền ấy cho các con.
+
+*— Mộc Yên*
+
+## Đọc Vườn Khai Tâm thế nào cho hữu ích?
+
+- **Bắt đầu từ tuổi của con.** Ở trang chủ, chọn nhóm tuổi để thấy những bài hợp với con nhất.
+- **Đọc truyện cùng con, mỗi tối một kỳ.** Cuối mỗi kỳ có vài câu hỏi trò chuyện. Hỏi một hai câu là đủ, không có câu trả lời sai.
+- **Thử một hoạt động nhỏ.** Bài Học cùng con có nút In để mang ra bàn học.
+- **Đọc nhật ký để thấy mình không đơn độc.** Những điều chưa hiệu quả cũng được ghi lại thật lòng.
+
+## Tủ sách Khai Tâm
+
+Khai Tâm còn là tên tủ sách Mộc Yên đang viết cho thiếu nhi và cha mẹ. Một số truyện được đăng trên Vườn Khai Tâm để mọi gia đình đọc miễn phí, bắt đầu với [An và Mạch Nước Ngầm](/truyen/an-va-mach-nuoc-ngam/). Xem thêm ở trang [Tủ sách](/tu-sach/).
 
 <h2 id="cam-ket-rieng-tu">Cam kết riêng tư</h2>
 
@@ -32,3 +55,7 @@ Với **Nhật ký vườn ươm**, mỗi bài đều qua 5 lớp ẩn danh: kh�
 Web này **không dùng cookie, không gắn công cụ theo dõi người đọc, không quảng cáo**. Ảnh đăng lên đều đã được xóa thông tin ẩn (như vị trí chụp). Video YouTube chỉ tải khi anh chị bấm nút phát.
 
 Với truyện nhiều kỳ, trình duyệt của anh chị tự ghi nhớ những kỳ đã đọc, để lần sau mở lại biết đọc tiếp từ đâu. Ghi nhớ này **chỉ nằm trên máy của anh chị, không gửi về Vườn Khai Tâm hay bất kỳ ai**. Anh chị xóa được bất cứ lúc nào bằng cách xóa dữ liệu trang web trong cài đặt trình duyệt.
+
+## Liên hệ
+
+Anh chị muốn góp ý, đề nghị chủ đề, hay kể chuyện nhà mình? Mời anh chị xem trang [Liên hệ](/lien-he/). Mộc Yên đọc mọi thư gửi tới, dù có khi trả lời chậm.
