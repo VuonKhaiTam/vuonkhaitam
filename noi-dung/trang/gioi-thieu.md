@@ -13,7 +13,7 @@ Mọi điều ở Khai Tâm xoay quanh ba chữ: **gieo hạt**, **khai mở** v
 
 ## Ai viết những trang này?
 
-Người viết những trang này ký tên Mộc Yên. Mộc Yên không phải nhà tâm lý hay chuyên gia giáo dục có chứng chỉ. Những gì viết ở đây là điều Mộc Yên đã đọc, đã thử với chính gia đình mình, kèm nguồn tham khảo để anh chị tự tìm hiểu thêm.
+Người viết những trang này ký tên Mộc Yên. Mộc Yên không phải nhà tâm lý hay chuyên gia giáo dục có chứng chỉ. Những gì viết ở đây là điều Mộc Yên đã đọc và đã thử, kèm nguồn tham khảo để anh chị tự tìm hiểu thêm.
 
 Vì vậy, xin anh chị đọc Vườn Khai Tâm như đọc ghi chép của một người bạn cùng đường, không phải lời khuyên chuyên môn. Nếu con gặp khó khăn kéo dài về cảm xúc, sức khỏe hay học tập, anh chị hãy tìm đến bác sĩ hoặc chuyên gia.
 
@@ -25,7 +25,7 @@ Mộc là cây, là sự sống tự nhiên, chẳng cần tô vẽ vẫn mang v
 
 Mộc Yên là bút danh tôi chọn cho mình, cũng là cách tôi muốn hiện diện giữa cuộc đời: giản dị, chân thành, chậm rãi quan sát và học cách lớn lên từ những điều bình thường.
 
-Viết dưới bút danh còn là để bảo vệ con tôi và những đứa trẻ xuất hiện trong các trang nhật ký. Một đứa trẻ có quyền lớn lên mà không bị người lạ biết tên, biết trường, biết những chuyện riêng của mình. Vườn Khai Tâm giữ quyền ấy cho các con.
+Viết dưới bút danh còn là để bảo vệ những đứa trẻ xuất hiện trong các trang viết. Một đứa trẻ có quyền lớn lên mà không bị người lạ biết tên, biết trường, biết những chuyện riêng của mình. Vườn Khai Tâm giữ quyền ấy cho các con.
 
 *— Mộc Yên*
 
