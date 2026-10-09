@@ -10,7 +10,7 @@ chu_de: ["gan-ket"]
 noi_bat: false
 video: ""
 lien_quan: ["/hoc-cung-con/hop-cau-hoi-bua-toi/"]
-an: false
+an: true
 mau: true
 giai_doan: "đầu cấp hai"
 ket_qua: dang-thu

@@ -21,7 +21,7 @@ layout: layouts/co-so.njk
   {%- endif %}
 
   {%- if hien_tu_sach %}
-  {%- set trangThaiSach = { "dang-hoan-thien": "Đang hoàn thiện", "doc-thu": "Đọc thử", "da-phat-hanh": "Đã phát hành" } %}
+  {%- set trangThaiSach = { "dang-hoan-thien": "Đang hoàn thiện", "doc-thu": "Đọc thử", "da-phat-hanh": "Đã phát hành", "doc-mien-phi": "Đọc miễn phí" } %}
   <div class="luoi-sach">
     {%- for sach in tuSach %}
     <article class="the-sach">
@@ -31,7 +31,7 @@ layout: layouts/co-so.njk
         <h2 class="the-sach-ten">{{ sach.ten }}</h2>
         <p>{{ sach.mo_ta }}</p>
         {%- if sach.lien_ket %}
-        <a class="nut" href="{{ sach.lien_ket }}">Xem sách</a>
+        <a class="nut" href="{{ sach.lien_ket }}">{{ "Đọc ngay" if sach.trang_thai == "doc-mien-phi" else "Xem sách" }}</a>
         {%- elif site.lien_he.facebook %}
         <a class="nut nut-vien" href="{{ site.lien_he.facebook }}" rel="noopener">Nhận thông báo</a>
         {%- else %}
@@ -45,7 +45,7 @@ layout: layouts/co-so.njk
 
   {%- if hien_tim_kiem %}
   <form class="o-tim" role="search" action="/tim-kiem/" data-o-tim>
-    <label for="o-tim-404">Tìm bài trong Vườn</label>
+    <label for="o-tim-404">Tìm bài trên Vườn Khai Tâm</label>
     <div class="o-tim-hang">
       <input id="o-tim-404" type="search" name="q" autocomplete="off" placeholder="Ví dụ: con hay cáu giận">
       <button class="nut" type="submit">Tìm</button>

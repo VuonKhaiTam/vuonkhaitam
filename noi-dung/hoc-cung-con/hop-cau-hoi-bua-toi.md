@@ -10,7 +10,7 @@ chu_de: ["gan-ket", "cam-xuc"]
 noi_bat: false
 video: ""
 lien_quan: ["/truyen/truyen-mau/ky-1/"]
-an: false
+an: true
 mau: true
 muc_tieu: "Con tự viết được ít nhất 3 câu hỏi và trả lời một câu bằng lời của mình"
 thoi_gian_phut: 15

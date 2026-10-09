@@ -433,3 +433,13 @@ details.hop-loi-ngo[open] summary{margin-bottom:6px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ---------- Trong bài: tiêu đề nhỏ, hộp "Con thử nghĩ xem", hộp "Ghi nhớ" ---------- */
+.noi-dung h4{font-family:var(--font-tieu-de);font-weight:600;font-size:19px;color:var(--rung-sau);margin:1.3em 0 .3em}
+.noi-dung .hop{font-size:16px}
+.noi-dung .hop-thu-nghi{margin:1.4em 0}
+.noi-dung .hop-thu-nghi .tang-cau-hoi{margin-top:0}
+.noi-dung .hop-thu-nghi p:last-child{margin-bottom:0}
+.hop-ghi-nho{background:var(--suong-som);border-left:4px solid var(--la-truong-thanh);border-radius:0 var(--bo-goc) var(--bo-goc) 0}
+.hop-ghi-nho p{margin:0}
+.the-sach-anh{object-fit:cover}

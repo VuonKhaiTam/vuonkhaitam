@@ -8,7 +8,7 @@
 ] -%}
 <nav class="thanh-day" aria-label="Điều hướng nhanh">
   {%- for muc in mucDay %}
-  {%- set dangO = (page.url == "/") if muc.url == "/" else page.url.startsWith(muc.url) %}
+  {%- set dangO = (page.url == "/") if muc.url == "/" else (page.url or "").startsWith(muc.url) %}
   <a href="{{ muc.url }}"{% if dangO %} aria-current="page"{% endif %}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">{{ muc.hinh | safe }}</svg><span>{{ muc.ten }}</span></a>
   {%- endfor %}
 </nav>

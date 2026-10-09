@@ -1,24 +1,32 @@
 [
   {
+    "ten": "Lồng Đèn Gọi Tên",
+    "mo_ta": "Câu chuyện về một cô bé học cách làm bạn với cảm xúc của mình, bên ngọn hải đăng cuối Mũi Gió. Kèm sổ tay nhỏ cho con và phụ lục khoa học cho người lớn đi cùng.",
+    "do_tuoi": ["6-8", "9-11"],
+    "trang_thai": "doc-mien-phi",
+    "anh": "/anh/2026/10/long-den-goi-ten-bia.webp",
+    "lien_ket": "/truyen/long-den-goi-ten/"
+  },
+  {
     "ten": "An và Mạch Nước Ngầm",
     "mo_ta": "Cô bé An đi tìm \"kho báu\" giúp cả làng thoát nghèo, và học được giá trị của lao động, của đồng tiền qua năm chiếc hũ gốm.",
     "do_tuoi": ["9-11"],
-    "trang_thai": "dang-hoan-thien",
-    "anh": "",
-    "lien_ket": ""
+    "trang_thai": "doc-mien-phi",
+    "anh": "/anh/2026/10/an-va-mach-nuoc-ngam-bia.webp",
+    "lien_ket": "/truyen/an-va-mach-nuoc-ngam/"
+  },
+  {
+    "ten": "Con và AI: Ai cầm lái?",
+    "mo_ta": "Sách nhỏ năm buổi đọc cho các bạn khoảng 11 tuổi và ba mẹ: hiểu AI là gì, dùng AI mà vẫn tự nghĩ, cùng 14 kỹ năng sống và thử thách 7 ngày.",
+    "do_tuoi": ["9-11", "12-15"],
+    "trang_thai": "doc-mien-phi",
+    "anh": "/anh/2026/10/con-va-ai-ai-cam-lai-bia.webp",
+    "lien_ket": "/truyen/con-va-ai-ai-cam-lai/"
   },
   {
     "ten": "Siêu Xe: Động cơ Ferrari – Phanh xe đạp",
     "mo_ta": "Cuốn sổ tay dành cho những đứa trẻ có \"động cơ nhanh\" và cha mẹ của các con: hiểu cảm xúc, tập tự điều chỉnh, sống cùng màn hình.",
     "do_tuoi": ["9-11", "12-15"],
-    "trang_thai": "dang-hoan-thien",
-    "anh": "",
-    "lien_ket": ""
-  },
-  {
-    "ten": "Lồng Đèn Gọi Tên",
-    "mo_ta": "Câu chuyện về một cô bé học cách gọi tên và làm bạn với cảm xúc của mình.",
-    "do_tuoi": ["6-8", "9-11"],
     "trang_thai": "dang-hoan-thien",
     "anh": "",
     "lien_ket": ""

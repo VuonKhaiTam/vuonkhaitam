@@ -10,7 +10,7 @@ chu_de: ["tu-duy", "thoi-quen-hoc"]
 noi_bat: false
 video: ""
 lien_quan: ["/hoc-cung-con/hop-cau-hoi-bua-toi/"]
-an: false
+an: true
 mau: true
 tom_tat:
   - "Học thuộc giúp con nhớ nhanh, học hiểu giúp con nhớ lâu và dùng được."

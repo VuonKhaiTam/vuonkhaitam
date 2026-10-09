@@ -10,7 +10,7 @@ chu_de: ["cam-xuc", "gan-ket"]
 noi_bat: false
 video: ""
 lien_quan: []
-an: false
+an: true
 mau: true
 bo_truyen: truyen-mau
 ky: 3

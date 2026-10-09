@@ -23,10 +23,10 @@
     <nav class="menu-ngang" aria-label="Mục chính">
       <ul>
         {%- for muc in menuChinh %}
-        <li><a href="{{ muc.url }}"{% if page.url.startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
+        <li><a href="{{ muc.url }}"{% if (page.url or "").startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
         {%- endfor %}
-        <li class="chi-may-lon"><a href="/tu-sach/"{% if page.url.startsWith("/tu-sach/") %} aria-current="page"{% endif %}>Tủ sách</a></li>
-        <li class="chi-may-lon"><a href="/gioi-thieu/"{% if page.url.startsWith("/gioi-thieu/") %} aria-current="page"{% endif %}>Giới thiệu</a></li>
+        <li class="chi-may-lon"><a href="/tu-sach/"{% if (page.url or "").startsWith("/tu-sach/") %} aria-current="page"{% endif %}>Tủ sách</a></li>
+        <li class="chi-may-lon"><a href="/gioi-thieu/"{% if (page.url or "").startsWith("/gioi-thieu/") %} aria-current="page"{% endif %}>Giới thiệu</a></li>
         <li><a class="menu-tim" href="/tim-kiem/" aria-label="Tìm kiếm"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></li>
       </ul>
     </nav>
@@ -38,7 +38,7 @@
   <nav id="menu-day-du" class="menu-day-du" aria-label="Tất cả các mục" hidden>
     <ul>
       {%- for muc in menuDayDu %}
-      <li><a href="{{ muc.url }}"{% if page.url.startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
+      <li><a href="{{ muc.url }}"{% if (page.url or "").startsWith(muc.url) %} aria-current="page"{% endif %}>{{ muc.ten }}</a></li>
       {%- endfor %}
     </ul>
   </nav>

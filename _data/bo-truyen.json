@@ -1,11 +1,26 @@
 {
-  "truyen-mau": {
-    "ten": "Truyện mẫu: Hạt mầm biết chờ",
-    "mo_ta": "Bộ truyện mẫu ba kỳ để thử giao diện đăng nhiều kỳ. Sẽ được thay bằng truyện thật trước khi ra mắt.",
+  "long-den-goi-ten": {
+    "ten": "Lồng Đèn Gọi Tên",
+    "mo_ta": "Mùa hè ở Mũi Gió, cô bé Mây theo bà, người gác ngọn hải đăng, học cách thắp đèn, gọi tên và mời ngồi những vị khách trùm khăn trong lòng mình. Truyện chín kỳ để đọc to cùng con, mỗi tối một chương.",
     "do_tuoi": ["6-8", "9-11"],
     "chu_de": ["cam-xuc", "gan-ket"],
-    "anh_bia": "",
-    "trang_thai": "dang-dang",
-    "mau": true
+    "anh_bia": "/anh/2026/10/long-den-goi-ten-bia.webp",
+    "trang_thai": "hoan-thanh"
+  },
+  "an-va-mach-nuoc-ngam": {
+    "ten": "An và Mạch Nước Ngầm",
+    "mo_ta": "Cô bé An đi tìm \"mạch nước ngầm\" giúp cả làng thoát nghèo, và học được giá trị của lao động, của đồng tiền và của sự sẻ chia qua năm chiếc hũ gốm. Truyện sáu kỳ cho các bạn nhỏ đọc cùng cha mẹ.",
+    "do_tuoi": ["9-11"],
+    "chu_de": ["tien-bac", "gan-ket"],
+    "anh_bia": "/anh/2026/10/an-va-mach-nuoc-ngam-bia.webp",
+    "trang_thai": "hoan-thanh"
+  },
+  "con-va-ai-ai-cam-lai": {
+    "ten": "Con và AI: Ai cầm lái?",
+    "mo_ta": "Sách nhỏ năm buổi đọc cho các bạn khoảng 11 tuổi và ba mẹ: AI là ai, dùng AI mà vẫn tự nghĩ, và 14 kỹ năng sống giúp con vững vàng dù máy móc đổi thay.",
+    "do_tuoi": ["9-11", "12-15"],
+    "chu_de": ["cong-nghe", "tu-duy", "tuoi-lon"],
+    "anh_bia": "/anh/2026/10/con-va-ai-ai-cam-lai-bia.webp",
+    "trang_thai": "hoan-thanh"
   }
 }

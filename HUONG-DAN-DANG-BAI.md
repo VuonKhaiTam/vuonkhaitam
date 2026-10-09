@@ -6,9 +6,9 @@ Tài liệu này dành cho tác giả (Mộc Yên), viết cho người không b
 
 ## 1. Lần đầu: tạo "chìa khóa" GitHub (token)
 
-Token là một mật khẩu riêng, cho phép trang Đăng bài cất bài vào kho của Vườn trên GitHub. Mỗi máy (điện thoại, máy tính) chỉ cần làm một lần.
+Token là một mật khẩu riêng, cho phép trang Đăng bài cất bài vào kho của Vườn Khai Tâm trên GitHub. Mỗi máy (điện thoại, máy tính) chỉ cần làm một lần.
 
-1. Đăng nhập GitHub bằng tài khoản của Vườn.
+1. Đăng nhập GitHub bằng tài khoản của Vườn Khai Tâm.
 2. Mở trang tạo token: https://github.com/settings/personal-access-tokens/new
 3. **Token name:** gõ `dang-bai`.
 4. **Expiration (hạn dùng):** chọn 1 năm hoặc ngắn hơn. Trang Đăng bài sẽ nhắc khi token còn dưới 30 ngày.
@@ -100,7 +100,7 @@ Trước khi đăng phải đánh dấu đủ 6 điều:
 
 Bản nháp nằm riêng trên từng máy. Muốn viết tiếp ở máy khác:
 1. Ở máy đang có nháp: **Cài đặt › Xuất bản nháp**. Máy tải về một file `vkt-ban-nhap-….json` (có kèm ảnh).
-2. Gửi file đó sang máy kia bằng cách riêng tư, ví dụ email riêng của Vườn, hoặc mục "Cloud của tôi" trong Zalo.
+2. Gửi file đó sang máy kia bằng cách riêng tư, ví dụ email riêng của Vườn Khai Tâm, hoặc mục "Cloud của tôi" trong Zalo.
 3. Ở máy kia: **Cài đặt › Nhập bản nháp**, chọn file vừa nhận.
 
 ## 9. Token sắp hết hạn
@@ -122,7 +122,7 @@ Khi trang báo "Token còn N ngày":
 
 **Lỡ đăng thông tin nhạy cảm của con**
 1. Vào trang Đăng bài, **Ẩn bài** ngay, hoặc sửa bỏ chỗ nhạy cảm. Bài biến mất khỏi web sau 1–2 phút.
-2. Kho của Vườn là kho công khai, nên **bản cũ vẫn còn trong lịch sử GitHub**. Nhờ Claude Code xóa hẳn khỏi lịch sử.
+2. Kho của Vườn Khai Tâm là kho công khai, nên **bản cũ vẫn còn trong lịch sử GitHub**. Nhờ Claude Code xóa hẳn khỏi lịch sử.
 3. Nếu là ảnh, nhờ Claude Code xóa cả file ảnh khỏi lịch sử.
 
 ## 11. Lớp bảo vệ thứ hai: danh sách từ nhạy cảm trên GitHub
@@ -136,6 +136,6 @@ Ngoài danh sách trên máy, có thể nhập danh sách từ nhạy cảm vào
 
 ## 12. Việc nên làm sau khi ra mắt
 
-- **Google Search Console** (công cụ miễn phí của Google cho biết người ta gõ gì để tìm ra web): đăng ký bằng email riêng của Vườn tại https://search.google.com/search-console, chọn loại "Domain", nhập `vuonkhaitam.com`, làm theo hướng dẫn thêm một bản ghi TXT ở nơi mua tên miền. Sau đó gửi sơ đồ web: `https://vuonkhaitam.com/sitemap.xml`.
+- **Google Search Console** (công cụ miễn phí của Google cho biết người ta gõ gì để tìm ra web): đăng ký bằng email riêng của Vườn Khai Tâm tại https://search.google.com/search-console, chọn loại "Domain", nhập `vuonkhaitam.com`, làm theo hướng dẫn thêm một bản ghi TXT ở nơi mua tên miền. Sau đó gửi sơ đồ web: `https://vuonkhaitam.com/sitemap.xml`.
 - **Kiểm tra tốc độ:** mở https://pagespeed.web.dev, dán link trang chủ hoặc một bài, xem điểm trên điện thoại (mục tiêu từ 90 trở lên).
 - **Kiểm tra khi chia sẻ:** dán link một bài vào Zalo và Facebook, xem có hiện đúng ảnh, tiêu đề, mô tả không. Nếu Facebook hiện ảnh cũ, mở https://developers.facebook.com/tools/debug/, dán link, bấm **Scrape Again**.

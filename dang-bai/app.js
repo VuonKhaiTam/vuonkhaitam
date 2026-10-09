@@ -1259,7 +1259,7 @@ function veForm() {
   }
 
   phan.push(oChu("video", "Video YouTube ở đầu bài", { kieu: "url", tuyChon: true, goiY: "Dán link YouTube nếu muốn video hiện ngay đầu bài." }));
-  phan.push(dsDong("lien_quan", "Bài liên quan", { tuyChon: true, goiY: "Đường dẫn bài khác trong Vườn, ví dụ /goc-cha-me/hoc-hieu-thay-vi-hoc-thuoc/. Thiếu thì web tự gợi ý bài cùng chủ đề." }));
+  phan.push(dsDong("lien_quan", "Bài liên quan", { tuyChon: true, goiY: "Đường dẫn bài khác trên Vườn Khai Tâm, ví dụ /goc-cha-me/hoc-hieu-thay-vi-hoc-thuoc/. Thiếu thì web tự gợi ý bài cùng chủ đề." }));
   phan.push(oDanhDau("noi_bat", "Đưa lên mục nổi bật ở trang chủ"));
   f.replaceChildren(el("div", { class: "the" }, phan));
 }
@@ -1492,7 +1492,7 @@ function kiemTra() {
   }
   if (!coBo) {
     const lienKet = (md.match(/\]\((?:\/|https:\/\/vuonkhaitam\.com)/g) || []).length + (fm.lien_quan || []).filter((x) => x?.trim()).length + (fm.hoat_dong_tiep_noi ? 1 : 0) + (fm.truyen_lien_quan ? 1 : 0);
-    if (lienKet < 2) canh.push("Bài có ít hơn 2 liên kết tới bài khác trong Vườn. Thêm vài đường dẫn ở mục Bài liên quan để người đọc đi tiếp.");
+    if (lienKet < 2) canh.push("Bài có ít hơn 2 liên kết tới bài khác trên Vườn Khai Tâm. Thêm vài đường dẫn ở mục Bài liên quan để người đọc đi tiếp.");
   }
   const doanDai = md.split(/\n{2,}/).filter((d) => !/^(#|>|-|\d+\.|!\[|<|```)/.test(d.trim()) && soChu(d) > 90);
   if (doanDai.length) canh.push(`Có ${doanDai.length} đoạn dài hơn 90 chữ, nên tách cho dễ đọc trên điện thoại. Đoạn đầu tiên bắt đầu bằng: "${doanDai[0].split(/\s+/).slice(0, 8).join(" ")}…"`);

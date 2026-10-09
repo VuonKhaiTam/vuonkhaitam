@@ -22,7 +22,7 @@ Mộc Yên là bút danh. Tác giả chọn viết ẩn danh để bảo vệ co
 Vườn Khai Tâm **không bao giờ đăng**:
 
 - Tên thật hoặc tên ở nhà của trẻ.
-- Ảnh thấy mặt trẻ. Ảnh trong Vườn chỉ chụp từ sau lưng, ở xa, chỉ thấy đôi tay, hoặc chỉ có đồ vật.
+- Ảnh thấy mặt trẻ. Ảnh trên Vườn Khai Tâm chỉ chụp từ sau lưng, ở xa, chỉ thấy đôi tay, hoặc chỉ có đồ vật.
 - Trường, lớp, thầy cô, đồng phục, bảng tên trường.
 - Địa chỉ, nơi ở, lịch sinh hoạt của trẻ.
 - Điểm số, chuyện sức khỏe, chẩn đoán, hay những chuyện khiến trẻ xấu hổ.
@@ -31,4 +31,4 @@ Với **Nhật ký vườn ươm**, mỗi bài đều qua 5 lớp ẩn danh: kh�
 
 Web này **không dùng cookie, không gắn công cụ theo dõi người đọc, không quảng cáo**. Ảnh đăng lên đều đã được xóa thông tin ẩn (như vị trí chụp). Video YouTube chỉ tải khi anh chị bấm nút phát.
 
-Với truyện nhiều kỳ, trình duyệt của anh chị tự ghi nhớ những kỳ đã đọc, để lần sau mở lại biết đọc tiếp từ đâu. Ghi nhớ này **chỉ nằm trên máy của anh chị, không gửi về Vườn hay bất kỳ ai**. Anh chị xóa được bất cứ lúc nào bằng cách xóa dữ liệu trang web trong cài đặt trình duyệt.
+Với truyện nhiều kỳ, trình duyệt của anh chị tự ghi nhớ những kỳ đã đọc, để lần sau mở lại biết đọc tiếp từ đâu. Ghi nhớ này **chỉ nằm trên máy của anh chị, không gửi về Vườn Khai Tâm hay bất kỳ ai**. Anh chị xóa được bất cứ lúc nào bằng cách xóa dữ liệu trang web trong cài đặt trình duyệt.
