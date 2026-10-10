@@ -37,7 +37,7 @@
   if (fm.do_tuoi?.length) nhan.append(el("span", "nhan-tuoi", khoangTuoi(fm.do_tuoi)));
   phan.push(nhan);
   phan.push(el("h1", "bai-tieu-de", fm.title || "(chưa có tiêu đề)"));
-  phan.push(el("p", "dong-thong-tin", `Mộc Yên · ${fm.date || ""}`));
+  phan.push(el("p", "dong-thong-tin", `Mộc Yên biên soạn · Chim Sâu cùng làm · ${fm.date || ""}`));
   if (d.loai === "truyen" && d.tenBo) {
     const thanh = el("div", "tien-do-truyen");
     const dau = el("p", "tdt-dau");
@@ -116,7 +116,7 @@
     phan.push(hop);
   }
   if (d.loai === "nhat-ky") {
-    phan.push(el("p", "ghi-chu-nhat-ky", "Đây là ghi chép của một gia đình, không phải lời khuyên chuyên môn. Một số chi tiết đã được thay đổi để bảo vệ trẻ."));
+    phan.push(el("p", "ghi-chu-nhat-ky", "Đây là ghi chép và cảm nhận riêng của người viết, không phải lời khuyên chuyên môn. Một số chi tiết đã được thay đổi để bảo vệ trẻ."));
   }
   const chuDe = tenChuDe(fm.chu_de);
   if (chuDe) phan.push(el("p", "phu", `Chủ đề: ${chuDe}`));
