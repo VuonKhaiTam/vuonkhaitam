@@ -847,7 +847,7 @@ function fmMoi(loai) {
     "goc-cha-me": { tom_tat: ["", "", ""], nguon: [] },
     truyen: { ky: 1, ten_ky: "", tom_tat_ky: "", loi_ngo: "", cau_hoi: { nho_lai: [""], cam_nhan: [""], lien_he: [""] }, hoat_dong_tiep_noi: "" },
     "hoc-cung-con": { muc_tieu: "", thoi_gian_phut: 20, vat_lieu: [""], noi_lam: "ở nhà", truyen_lien_quan: "", cau_hoi_cuoi: [""] },
-    "nhat-ky": { giai_doan: "", ket_qua: "dang-thu" },
+    "nhat-ky": { giai_doan: "", ket_qua: "" },
   }[loai];
   return { ...chung, ...structuredClone(rieng) };
 }
@@ -1255,7 +1255,7 @@ function veForm() {
   }
   if (bai.loai === "nhat-ky") {
     phan.push(oChu("giai_doan", "Giai đoạn", { goiY: 'Chỉ ghi nhóm tuổi chung, ví dụ "đầu cấp hai". Không ghi tuổi hay lớp chính xác.' }));
-    phan.push(oChonMot("ket_qua", "Kết quả", [["dang-thu", "Đang thử"], ["hieu-qua", "Hiệu quả"], ["chua-hieu-qua", "Chưa hiệu quả"]]));
+    phan.push(oChonMot("ket_qua", "Nhãn (không bắt buộc)", [["", "Không gắn nhãn"], ["bo-ngo", "Còn bỏ ngỏ"], ["dang-thu", "Đang thử"], ["hieu-qua", "Hiệu quả"], ["chua-hieu-qua", "Chưa hiệu quả"]], "Bài cảm nhận, ghi chép điều đã đọc thì không cần nhãn. Câu hỏi chưa có lời giải thì chọn Còn bỏ ngỏ."));
   }
 
   phan.push(oChu("video", "Video YouTube ở đầu bài", { kieu: "url", tuyChon: true, goiY: "Dán link YouTube nếu muốn video hiện ngay đầu bài." }));
@@ -1563,6 +1563,7 @@ function lamSachFm(fm, coBo) {
   if (coBo) sach.ky = Number(sach.ky);
   else for (const k of ["bo_truyen", "ky", "ten_ky", "tom_tat_ky"]) delete sach[k];
   if (sach.thoi_gian_phut !== undefined && sach.thoi_gian_phut !== "") sach.thoi_gian_phut = Number(sach.thoi_gian_phut);
+  if (sach.ket_qua === "") delete sach.ket_qua;
   return sach;
 }
 

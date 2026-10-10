@@ -89,6 +89,8 @@ Trước khi đăng phải đánh dấu đủ 6 điều:
 
 Ô **Giai đoạn** chỉ ghi nhóm tuổi chung như "đầu cấp hai", không ghi tuổi hay lớp chính xác.
 
+Ô **Nhãn** không bắt buộc. Bài cảm nhận hay ghi chép điều đã đọc thì để *Không gắn nhãn*. Câu hỏi chưa có lời giải thì chọn *Còn bỏ ngỏ*. Bài kể việc đã thử thì chọn *Đang thử*, *Hiệu quả* hoặc *Chưa hiệu quả*.
+
 ## 7. Sửa, ẩn, xóa bài đã đăng
 
 Ở bảng điều khiển, phần **Bài đã đăng**, bấm **Tải danh sách**, gõ tên bài vào ô tìm nếu cần.

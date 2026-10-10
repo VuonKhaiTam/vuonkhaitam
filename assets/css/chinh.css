@@ -85,6 +85,7 @@ strong,b{font-weight:600}
 .nhan-truyen,.nhan-chua-hieu-qua{background:var(--nhan-truyen-nen);color:var(--nhan-truyen-chu)}
 .nhan-hoc{background:var(--nhan-hoc-nen);color:var(--nhan-hoc-chu)}
 .nhan-nhatky,.nhan-dang-thu{background:var(--nhan-nhatky-nen);color:var(--nhan-nhatky-chu)}
+.nhan-bo-ngo{background:var(--giay-trang);border:1px dashed var(--nhan-nhatky-chu);color:var(--nhan-nhatky-chu)}
 .nhan-tuoi{background:var(--giay-trang);border:1px solid var(--vien);color:var(--muc-nhat)}
 
 /* ---------- Đầu trang ---------- */

@@ -6,7 +6,8 @@ layout: layouts/co-so.njk
 {%- set cacKetQua = {
   "hieu-qua": { ten: "Hiệu quả", lop: "nhan-hieu-qua" },
   "chua-hieu-qua": { ten: "Chưa hiệu quả", lop: "nhan-chua-hieu-qua" },
-  "dang-thu": { ten: "Đang thử", lop: "nhan-dang-thu" }
+  "dang-thu": { ten: "Đang thử", lop: "nhan-dang-thu" },
+  "bo-ngo": { ten: "Còn bỏ ngỏ", lop: "nhan-bo-ngo" }
 } -%}
 {%- set nhanThem = cacKetQua[ket_qua] if ket_qua else null -%}
 <article class="bai khung-hep">
